@@ -21,8 +21,8 @@ public class ArrayListTaskImpl implements IFindCollectionMemory,IFindCollectionT
     public Long showTimeDeleting(Collection collection) {
         Long start = System.nanoTime();
         ((ArrayList)collection).remove(0);
-
-        return null;
+        Long end = System.nanoTime();
+        return end-start;
     }
 
     public Long showTimeBeginInserting(Collection collection) {
