@@ -8,7 +8,7 @@ import smartgrabber.collect.SimpleTest;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello !!!!!");
+        System.out.println("Hello!!!!!");
         SimpleTest test = new SimpleTest();
         IMove car = new CarMoveImpl();
         test.getMove(car);
