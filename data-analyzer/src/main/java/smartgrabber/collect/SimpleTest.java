@@ -9,5 +9,6 @@ public class SimpleTest {
 
     public void getMove(IMove move) {
         System.out.println(move.move());
+
     }
 }
