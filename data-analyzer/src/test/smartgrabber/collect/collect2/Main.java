@@ -7,12 +7,15 @@ import java.util.ArrayList;
  */
 public class Main {
     public static void main(String[] args) {
-        ArrayList<String> arrayList = new ArrayList<String>();
+        ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("1sdfsdfsdfsdfsdfsdfsd");
         ArrayListTaskImpl task = new ArrayListTaskImpl();
         Long memSize = task.findMemory(arrayList);
         System.out.println(memSize+" BYTES");
         System.out.println("Time for deleting: "+task.showTimeDeleting(arrayList));
         arrayList.forEach(System.out::println);
+        for (int i = 0; i < arrayList.size(); i++) {
+            System.out.println(arrayList.get(i));
+        }
     }
 }
