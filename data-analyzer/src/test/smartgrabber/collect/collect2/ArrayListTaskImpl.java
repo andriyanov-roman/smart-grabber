@@ -20,20 +20,42 @@ public class ArrayListTaskImpl implements IFindCollectionMemory,IFindCollectionT
 
     public Long showTimeDeleting(Collection collection) {
         Long start = System.nanoTime();
-        ((ArrayList)collection).remove(0);
+        ((ArrayList)collection).remove(6);
         Long end = System.nanoTime();
         return end-start;
     }
 
     public Long showTimeBeginInserting(Collection collection) {
-        return null;
+        Long start = System.nanoTime();
+        ((ArrayList)collection).add(0, "");
+        Long end = System.nanoTime();
+        return end-start;
     }
 
     public Long showTimeMiddleInserting(Collection collection) {
-        return null;
+        ArrayList arrayList = (ArrayList) collection;
+        int middle = (int) Math.ceil(arrayList.size()/2);
+        System.out.println(middle);
+        Long start = System.nanoTime();
+        arrayList.add(middle, "RRRRRRRRRRRRRRRRRRRRRRRR");
+        Long end = System.nanoTime();
+        return end-start;
     }
 
     public Long showTimeEndInserting(Collection collection) {
-        return null;
+        ArrayList arrayList = (ArrayList) collection;
+        Long start = System.nanoTime();
+        arrayList.add("GGGGGGGGG");
+        Long end = System.nanoTime();
+        return end-start;
+    }
+    public Long showTimeMillionInserting(Collection collection) {
+        ArrayList arrayList = (ArrayList) collection;
+        Long start = System.nanoTime();
+        for (int i = 0; i < 999999; i++) {
+            arrayList.add("GGGGGGGGG");
+        }
+        Long end = System.nanoTime();
+        return end-start;
     }
 }
