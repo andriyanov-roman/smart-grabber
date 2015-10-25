@@ -1,4 +1,6 @@
-package smartgrabber.collect;
+package smartgrabber.examples.collectionanalyzer.examples;
+
+import smartgrabber.collection_analyzer.ITimeAnalyzer;
 
 import java.util.Collection;
 

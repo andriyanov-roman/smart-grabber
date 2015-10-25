@@ -1,4 +1,4 @@
-package smartgrabber.collect;
+package smartgrabber.collection_analyzer;
 
 
 public interface IMemoryAnalyzer<T> extends ITimeAnalyzer<T> {

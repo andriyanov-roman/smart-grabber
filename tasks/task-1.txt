@@ -6,6 +6,9 @@
 4. LikedList ArrayList, PriorityQueue проверить скорость вставки - в нач., сер., кон.
 
 Каждому:
+
+
+
 Дима - ArrayList, LinkedList
 Миша - Set (всех, в т.ч. HashSet LinkedTreeset)
 Алиса - очереди (queue, dequeue)

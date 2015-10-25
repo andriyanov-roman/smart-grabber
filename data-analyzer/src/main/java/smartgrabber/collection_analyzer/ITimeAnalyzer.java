@@ -1,4 +1,4 @@
-package smartgrabber.collect;
+package smartgrabber.collection_analyzer;
 
 /**
  * Created by randriyanov on 25.10.15.

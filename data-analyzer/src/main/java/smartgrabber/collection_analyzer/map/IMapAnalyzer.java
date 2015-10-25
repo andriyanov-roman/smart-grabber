@@ -1,4 +1,6 @@
-package smartgrabber.collect;
+package smartgrabber.collection_analyzer.map;
+
+import smartgrabber.collection_analyzer.IMemoryAnalyzer;
 
 import java.util.Map;
 

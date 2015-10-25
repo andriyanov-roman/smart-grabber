@@ -1,4 +1,4 @@
-package smartgrabber.collect;
+package smartgrabber.collection_analyzer.find_interfaces;
 
 import java.util.Collection;
 
