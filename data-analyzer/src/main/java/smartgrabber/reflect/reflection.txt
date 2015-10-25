@@ -1,0 +1,4 @@
+http://tutorials.jenkov.com/java-reflection/annotations.html
+http://viralpatel.net/blogs/java-dynamic-class-loading-java-reflection-api/
+http://stackoverflow.com/questions/11016092/how-to-load-classes-at-runtime-from-a-folder-or-jar
+http://stackoverflow.com/questions/6219829/method-to-dynamically-load-java-class-files
