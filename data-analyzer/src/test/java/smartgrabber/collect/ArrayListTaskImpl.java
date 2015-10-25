@@ -1,8 +1,6 @@
 package smartgrabber.collect;
 
 import com.carrotsearch.sizeof.RamUsageEstimator;
-import smartgrabber.collect2.IFindCollectionMemory;
-import smartgrabber.collect2.IFindCollectionTime;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -1,7 +1,7 @@
 package smartgrabber.analyzer;
 
 
-import smartgrabber.logic.TextAnalyzerImpl;
+import smartgrabber.examples.logic.TextAnalyzerImpl;
 
 public class DbTextRetrieval {
 
