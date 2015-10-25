@@ -1,4 +1,4 @@
-package smartgrabber.collect.collect2;
+package smartgrabber.collect;
 
 import com.carrotsearch.sizeof.RamUsageEstimator;
 import smartgrabber.collect2.IFindCollectionMemory;

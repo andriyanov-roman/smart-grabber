@@ -1,4 +1,4 @@
-package smartgrabber.collect.collect2;
+package smartgrabber.collect;
 
 import java.util.ArrayList;
 
