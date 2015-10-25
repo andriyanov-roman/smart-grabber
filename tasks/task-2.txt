@@ -11,6 +11,16 @@
 
 3.* Написать immutable-объект, который в качестве состояний имеет все поля mutable.
 Чтобы это протестировать, этот объект нужно засунуть в качестве ключа в MAP, потом
-Вы пытаетесь засетить эти состояния (например типа ArrayList). Если не получилось засетить,
+Вы пытаетесь подменить состояния immutable-объект(например getArrayList().set(""))
+эти состояния (например типа ArrayList). Если не получилось засетить,
 а соотвественно поменять хэш-код, значит всё ОК.
 По сути, нужно написать идеальный ключ для MAP, который неизменяемый.
+То есть:
+MyImmutableObject object = new MyImmutableObject();
+Map<MyImmutableObject, String> map = new HashMap<>();
+map.put(object, "A");
+Assertation.equals(map.get(object), "A");
+object.getArrayList().add("B");
+object.getDate().setTime(100000L);
+object.getMap().put();
+Assertation.equals(map.get(object), "A");
