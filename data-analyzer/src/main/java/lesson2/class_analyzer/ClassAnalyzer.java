@@ -1,6 +1,8 @@
 package lesson2.class_analyzer;
 
 
+import lesson2.method_invoker.MethodInvoker;
+
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
@@ -11,6 +13,14 @@ import java.lang.reflect.*;
 public class ClassAnalyzer {
 
     private Class clazz;
+
+    public Class getClazz() {
+        return clazz;
+    }
+
+    public void setClazz(Class clazz) {
+        this.clazz = clazz;
+    }
 
     public ClassAnalyzer(String className) {
         try {
@@ -33,7 +43,6 @@ public class ClassAnalyzer {
                 obtainFields();
                 obtainConstructors();
                 obtainMethods();
-                obtainAnnotations();
                 break;
             case "-cls":
                 obtainClassInfo();
@@ -61,14 +70,15 @@ public class ClassAnalyzer {
         System.out.println("is primitive:    " + clazz.isPrimitive());
         System.out.println("is number:       " + Number.class.isAssignableFrom(clazz));
         System.out.println("modifier:        " + printModifiers(clazz.getModifiers()));
+        System.out.println("\n");
     }
 
     private void obtainInterfaces() {
-        System.out.print("Interfaces impl:");
+        System.out.print("Interfaces:");
         for (Class classInterface : clazz.getInterfaces()) {
             System.out.print(" " + classInterface.getName() + ",");
         }
-        System.out.println();
+        System.out.println("\n");
     }
 
     private void obtainFields() {
@@ -78,6 +88,7 @@ public class ClassAnalyzer {
             System.out.println("\t" + printModifiers(fields[i].getModifiers())
                     + fields[i].getType().getSimpleName() + " " + fields[i].getName());
         }
+        System.out.println("\n");
     }
 
     private void obtainConstructors() {
@@ -92,6 +103,7 @@ public class ClassAnalyzer {
                         + paramType.getSimpleName().substring(0, 1).toLowerCase() + ")");
             }
         }
+        System.out.println("\n");
     }
 
     private void obtainMethods() {
@@ -112,9 +124,6 @@ public class ClassAnalyzer {
             }
             System.out.println(")");
         }
-    }
-
-    private void obtainAnnotations() {
     }
 
     private String printModifiers(int modifier) {
@@ -165,4 +174,5 @@ public class ClassAnalyzer {
         }
         return s;
     }
+
 }
