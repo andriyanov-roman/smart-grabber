@@ -15,11 +15,11 @@ public class DemoClassAnalyzer {
         System.out.println("Hallo!\n" +
                 "Enter the class name, e.g. java.lang.String\n" +
                 "or Create object, e.g. Object obj = new String()");
-        String s = in.next(); // in.next()
+        String s = "java.lang.String"; // in.next()
         ClassAnalyzer classAnalyzer = new ClassAnalyzer(s);
 
-        System.out.println("usage: -cls, -fld, -ctr, -mtd");
-        classAnalyzer.analyze(in.next()); // in.next()
+        System.out.println("usage: -all, -cls, -fld, -ctr, -mtd");
+        classAnalyzer.analyze("-all"); // in.next()
     }
 }
 
