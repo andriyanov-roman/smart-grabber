@@ -11,6 +11,9 @@ public class SampleClass {
     public void test(Integer integer){
         System.out.println("I'm FIRST method. Result: "+integer);
     }
+    public void anotherMethod (){
+        System.out.println("anotherMethod is Done!");
+    }
     public void test(Double d) {
         System.out.println("I'm SECOND method. Result: "+d);
     }

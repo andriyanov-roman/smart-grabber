@@ -13,9 +13,8 @@ public class MainClassInvoker {
         ClassInvokerImpl classInvoker = new ClassInvokerImpl();
         classInvoker.setExploredClass(SampleClass.class);
         classInvoker.printDeclaredMethods();
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Type invoked method name: ");
-        String nameOfInvokedMethod = "test";//scanner.next();
+        classInvoker.getMsg().printMsg("Type invoked method name: ");
+        String nameOfInvokedMethod = classInvoker.getMsg().readInputData();
         classInvoker.invokeMethod(nameOfInvokedMethod);
 
 

@@ -12,17 +12,25 @@ import java.util.Scanner;
  */
 public class ClassInvokerImpl<T> implements IClassInvoker {
     public static final String DEFAULT = "default";
+    public static final String STRING_CANONICAL_CLASS = "java.lang.String";
     private Class<T> exploredClass;
+    private ClassInvokerUtilImpl msg;
 
     public ClassInvokerImpl(Class<T> exploredClass) {
+        this.msg = new ClassInvokerUtilImpl();
         this.exploredClass = exploredClass;
     }
 
     public ClassInvokerImpl() {
+        this.msg = new ClassInvokerUtilImpl();
     }
 
     public Class<T> getExploredClass() {
         return exploredClass;
+    }
+
+    public ClassInvokerUtilImpl getMsg() {
+        return msg;
     }
 
     public void setExploredClass(Class<T> exploredClass) {
@@ -55,79 +63,80 @@ public class ClassInvokerImpl<T> implements IClassInvoker {
     public void prepareInvoking() {
 
     }
-    private Method specifyInvokedMethod (ArrayList<Method> methodVariations) throws NoSuchMethodException {
+
+    private Method specifyInvokedMethod(ArrayList<Method> methodVariations) throws NoSuchMethodException {
         Method invokedMethod;
         if (methodVariations.size() > 1) {
-            System.out.println("Select method variation:");
+            msg.printMsg(MsgCodes.SELECT_METHOD_VARIATION);
             for (int i = 0; i < methodVariations.size(); i++) {
                 System.out.println((i + 1) + ". " + retrieveMethodInStrForm(methodVariations.get(i)));
             }
-            int selector = Integer.parseInt(new Scanner(System.in).next()) - 1;
+            int selector = Integer.parseInt(msg.readInputData()) - 1;
             if (selector > methodVariations.size()) {
                 throw new NoSuchMethodException();
             } else {
                 invokedMethod = methodVariations.get(selector);
             }
-        } else {
+        } else if(methodVariations.size()==0){
+            throw new NoSuchMethodException("METHOD IS NOT SPECIFIED");
+        }else {
             invokedMethod = methodVariations.get(0);
         }
         return invokedMethod;
     }
-    private Object[] specifyParametrsForInvMethod (Method invokedMethod) throws IllegalAccessException, InvocationTargetException, InstantiationException {
-        System.out.println("Specify parameters (type '"+DEFAULT+"' to use Default Constructor on your own risk!):");
+
+    private Object[] specifyParametersForInvMethod(Method invokedMethod) throws IllegalAccessException, InvocationTargetException, InstantiationException {
+        msg.printMsg(MsgCodes.SPECIFY_PARAMETERS, DEFAULT);
         Object[] args = new Object[invokedMethod.getParameterCount()];
         for (int i = 0; i < invokedMethod.getParameterCount(); i++) {
             Class currentParameter = invokedMethod.getParameterTypes()[i];
             String paramKey = stringifyParam(currentParameter);
-            System.out.print(paramKey + ": ");
+            msg.printMsg(paramKey + ": ");
             Constructor paramConstructor = null;
             Boolean resultIsFind = false;
-            String unresolvedParamValue = new Scanner(System.in).next();
+            String unresolvedParamValue = msg.readInputData();
             if (unresolvedParamValue.equals(DEFAULT)) {
                 try {
                     paramConstructor = currentParameter.getConstructor(null);
                 } catch (NoSuchMethodException e) {
-                    System.out.println("\n\t\t>>>" + currentParameter.getName() + " DOESN'T HAVE EMPTY CONSTRUCTOR!\n");
-                    System.out.println("\t\t>>> I WARNED !!!\n\n ");
+                    msg.printMsg(MsgCodes.NO_EMPTY_CONSTRUCTOR, currentParameter.getName());
                     e.printStackTrace(System.out);
                     return null;
                 }
                 args[i] = paramConstructor.newInstance(new Object[]{});
                 break;
             } else {
-                System.out.print("\t\t\tSearching for default STRING constructor");
+                msg.printMsg(MsgCodes.SEARCH_DEFAULT_STRING_CONSTRUCTOR);
                 for (Constructor constructor : currentParameter.getConstructors()) {
                     for (Class constructorParamType : constructor.getParameterTypes()) {
-                        System.out.print(".");
-                        if (constructorParamType.getCanonicalName().equals("java.lang.String")) {
+                        msg.printMsg(MsgCodes.WAITER);
+                        if (constructorParamType.getCanonicalName().equals(STRING_CANONICAL_CLASS)) {
                             paramConstructor = constructor;
                             resultIsFind = true;
-                            System.out.print("\n\t [" + paramConstructor.getName()+"(String s)]");
+                            msg.printMsg(MsgCodes.WITH_STRING_ARGS_CONSTRUCTOR, paramConstructor.getName());
                             break;
                         }
                     }
-                    if (resultIsFind) {
-                        System.out.println("\t\tGot it!");
-                        break;
-                    }
                 }
             }
-            if (!resultIsFind) {
-                throw new NoSuchElementException("\nCan't create PARAMETER [" + paramKey + "] for method invoking");
-            } else {
+            if (resultIsFind) {
+                msg.printMsg(MsgCodes.RESULT_IS_FIND);
                 Object paramValue = paramConstructor.newInstance(unresolvedParamValue);
                 args[i] = paramValue;
+            } else {
+                throw new NoSuchElementException("\n\n\t\t\t\t***Can't create PARAMETER [" + paramKey + "] for method invoking***\n\n");
             }
         }
         return args;
     }
+
     public void invokeMethod(String methodName) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
         ArrayList<Method> methodVariations = receiveMethodVariations(methodName);
         Method invokedMethod = specifyInvokedMethod(methodVariations);
         if (invokedMethod.getParameterCount() == 0) {
             invokedMethod.invoke(exploredClass.newInstance(), new Class[]{});
         } else {
-            Object[] args = specifyParametrsForInvMethod(invokedMethod);
+            Object[] args = specifyParametersForInvMethod(invokedMethod);
             if (args != null) {
                 invokedMethod.invoke(exploredClass.newInstance(), args);
             } else {
