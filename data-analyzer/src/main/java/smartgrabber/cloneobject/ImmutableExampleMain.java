@@ -15,6 +15,7 @@ public class ImmutableExampleMain {
         assertEquals(map.get(object), "A");
         System.out.println(object.hashCode());
         object.getArrayList().add("B");
+
         object.getDate().setTime(100000L);
         assertEquals(map.get(object), "A");
         System.out.println(object.hashCode());
