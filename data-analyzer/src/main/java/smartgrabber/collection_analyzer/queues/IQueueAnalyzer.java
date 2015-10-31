@@ -7,7 +7,7 @@ import java.util.Collection;
 
 
 /**
- * by Aliso4ka1313 on 31.10.2015.
+ * by Aliso4ka1313 on 30.10.2015.
  */
 public interface IQueueAnalyzer <T extends Collection> extends IMemoryAnalyzer <T>{
     @Override

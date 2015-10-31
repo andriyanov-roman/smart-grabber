@@ -6,7 +6,7 @@ import com.carrotsearch.sizeof.RamUsageEstimator;
 import java.util.Queue;
 
 /**
- * by Aliso4ka1313 on 31.10.2015.
+ * by Aliso4ka1313 on 30.10.2015.
  */
 public class QueueImpl implements IQueueAnalyzer <Queue>{
 

@@ -7,7 +7,7 @@ import java.util.*;
 import smartgrabber.collection_analyzer.queues.IQueueAnalyzer;
 import smartgrabber.collection_analyzer.queues.QueueImpl;
 /**
- * by Aliso4ka1313 on 31.10.2015.
+ * by Aliso4ka1313 on 30.10.2015.
  */
 public class TestQueueAnalyzer {
     @Test
