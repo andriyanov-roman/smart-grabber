@@ -37,9 +37,13 @@ public class ClassInvokerImpl<T> implements IClassInvoker {
         this.exploredClass = exploredClass;
     }
 
+    public void printDeclaredMethods() {
+        for (Method method : exploredClass.getDeclaredMethods()) {
+            System.out.println(retrieveMethodInStrForm(method));
+        }
+    }
     private String stringifyParam(Class paramClass) {
-        return paramClass.getSimpleName() + " " +
-                paramClass.getSimpleName().toLowerCase().charAt(0);
+        return paramClass.getSimpleName() + " " + paramClass.getSimpleName().toLowerCase().charAt(0);
     }
 
     private String retrieveMethodInStrForm(Method method) {
@@ -54,15 +58,7 @@ public class ClassInvokerImpl<T> implements IClassInvoker {
         return methodStr + parameters + ");";
     }
 
-    public void printDeclaredMethods() {
-        for (Method method : exploredClass.getDeclaredMethods()) {
-            System.out.println(retrieveMethodInStrForm(method));
-        }
-    }
 
-    public void prepareInvoking() {
-
-    }
 
     private Method specifyInvokedMethod(ArrayList<Method> methodVariations) throws NoSuchMethodException {
         Method invokedMethod;
@@ -77,9 +73,9 @@ public class ClassInvokerImpl<T> implements IClassInvoker {
             } else {
                 invokedMethod = methodVariations.get(selector);
             }
-        } else if(methodVariations.size()==0){
+        } else if (methodVariations.size() == 0) {
             throw new NoSuchMethodException("METHOD IS NOT SPECIFIED");
-        }else {
+        } else {
             invokedMethod = methodVariations.get(0);
         }
         return invokedMethod;
@@ -103,7 +99,7 @@ public class ClassInvokerImpl<T> implements IClassInvoker {
                     e.printStackTrace(System.out);
                     return null;
                 }
-                args[i] = paramConstructor.newInstance(new Object[]{});
+                args[i] = paramConstructor.newInstance(null);
                 break;
             } else {
                 msg.printMsg(MsgCodes.SEARCH_DEFAULT_STRING_CONSTRUCTOR);
@@ -134,7 +130,7 @@ public class ClassInvokerImpl<T> implements IClassInvoker {
         ArrayList<Method> methodVariations = receiveMethodVariations(methodName);
         Method invokedMethod = specifyInvokedMethod(methodVariations);
         if (invokedMethod.getParameterCount() == 0) {
-            invokedMethod.invoke(exploredClass.newInstance(), new Class[]{});
+            invokedMethod.invoke(exploredClass.newInstance(), null);
         } else {
             Object[] args = specifyParametersForInvMethod(invokedMethod);
             if (args != null) {

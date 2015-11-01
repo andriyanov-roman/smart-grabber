@@ -3,6 +3,7 @@ package smartgrabber.class_invoker;
 import smartgrabber.class_analyzer.ClassAnalyzerImpl;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**

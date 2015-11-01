@@ -18,7 +18,7 @@ public class SampleClass {
         System.out.println("I'm SECOND method. Result: "+d);
     }
     public void test(ArrayList arrayList) {
-        System.out.println("I'm THIDR method. Result: "+arrayList);
+        System.out.println("I'm 3rd method. Result: "+arrayList);
     }
     public void test(SampleClass sampleClass) {
         System.out.println("I'm 4th method. Result: "+sampleClass);
