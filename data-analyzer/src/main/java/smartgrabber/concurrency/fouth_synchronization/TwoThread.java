@@ -1,8 +1,6 @@
 package smartgrabber.concurrency.fouth_synchronization;
 
-/**
- * Created by randriyanov on 26.08.15.
- */
+
 public class TwoThread {
     static int counter = 0;
     public static void main(String args[ ]) {

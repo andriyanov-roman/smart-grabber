@@ -4,7 +4,7 @@ package smartgrabber.concurrency.third_joins;
  * Created by randriyanov on 24.08.15.
  */
 public class DaemonRunner {
-    public static void main(String[ ] args) {
+    public static void main(String[ ] args) throws Exception{
 
         SimpleThread usual = new SimpleThread();
 
@@ -12,6 +12,7 @@ public class DaemonRunner {
         daemon.setDaemon(true);
         daemon.start();
         usual.start();
+        throw new Exception();
 
     }
 }

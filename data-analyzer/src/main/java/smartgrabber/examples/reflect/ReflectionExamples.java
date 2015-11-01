@@ -49,7 +49,7 @@ public class ReflectionExamples {
             // Load in the class; MyClass.class should be located in
             // the directory file:/c:/myclasses/com/mycompany
             Class cls = cl.loadClass("randriyanov.Test");
-            Method method = cls.getMethod("doSomething");
+            Method method = cls.getMethod("addNewElement");
             method.invoke(cls, null);
         } catch (MalformedURLException e) {
         } catch (ClassNotFoundException e) {

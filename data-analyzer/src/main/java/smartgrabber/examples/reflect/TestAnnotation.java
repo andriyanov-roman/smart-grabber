@@ -11,7 +11,7 @@ public class TestAnnotation {
         SimpleMethods simpleMethods = new SimpleMethods();
         Class clazz = simpleMethods.getClass();
 
-        Method method = clazz.getMethod("doSomething");
+        Method method = clazz.getMethod("addNewElement");
         MyAnnotation myAnnotation = method.getAnnotation(MyAnnotation.class);
         System.out.println(myAnnotation.value());
         System.out.println(myAnnotation.columnName());

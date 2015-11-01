@@ -10,6 +10,7 @@ public class DaemonThread extends Thread {
         for (int i = 0; i < 10; i++) {
             try {
                 Thread.currentThread().sleep(1000);
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

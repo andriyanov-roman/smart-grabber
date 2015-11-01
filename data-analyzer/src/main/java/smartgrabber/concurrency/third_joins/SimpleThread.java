@@ -7,7 +7,7 @@ public class SimpleThread extends Thread {
     public void run() {
         try {
             for (int i = 0; i < 10; i++) {
-                Thread.currentThread().sleep(100);
+                Thread.currentThread().sleep(1000);
                 System.out.println("старт обычного потока");
             }
         } catch (InterruptedException e) {
