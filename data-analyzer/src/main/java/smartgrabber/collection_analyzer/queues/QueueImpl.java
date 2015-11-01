@@ -19,17 +19,18 @@ public class QueueImpl implements IQueueAnalyzer <Queue>{
     @Override
     public Long findTime(Queue queue) {
         Long start = System.nanoTime();
-
+        queue.add("abrakadabra ");
+       // queue.remove(" ");
         Long end = System.nanoTime();
         return end-start;
     }
 
-   /* @Override
-    public Long removeTime(Collection collection) {
-        Long start = System.nanoTime();
+
+    /*public Long remove(Queue queue) {
+
         ((Queue)collection).remove(6);
-        Long end = System.nanoTime();
-        return end-start;
+
+        return ;
     }
 
     @Override
