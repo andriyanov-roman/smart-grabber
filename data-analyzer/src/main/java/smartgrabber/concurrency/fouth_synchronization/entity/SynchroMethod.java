@@ -1,4 +1,4 @@
-package smartgrabber.concurrency.fouth_synchronization;
+package smartgrabber.concurrency.fouth_synchronization.entity;
 
 
 import java.util.ArrayList;
@@ -7,9 +7,16 @@ public class SynchroMethod {
 
     private ArrayList<String> arrayList = new ArrayList<>();
 
+    public ArrayList<String> getArrayList() {
+        return arrayList;
+    }
+    public void setArrayList(ArrayList<String> arrayList) {
+        this.arrayList = arrayList;
+    }
+
     public void addNewElement() {
         synchronized (arrayList) {
-            if(arrayList.size() > 10) {
+            if (arrayList.size() > 10) {
                 try {
                     arrayList.wait();
                 } catch (InterruptedException e) {
@@ -21,11 +28,4 @@ public class SynchroMethod {
         }
     }
 
-    public ArrayList<String> getArrayList() {
-        return arrayList;
-    }
-
-    public void setArrayList(ArrayList<String> arrayList) {
-        this.arrayList = arrayList;
-    }
 }

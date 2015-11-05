@@ -1,5 +1,8 @@
 package smartgrabber.concurrency.fouth_synchronization;
 
+import smartgrabber.concurrency.fouth_synchronization.entity.Resource;
+import smartgrabber.concurrency.fouth_synchronization.entity.SyncThread;
+
 import java.io.IOException;
 
 /**
@@ -17,9 +20,9 @@ public class SynchroRun {
             t2.start();
 
         } catch (IOException e) {
-            System.err.print("ошибка файла: " + e);
+            System.err.print("ошибка файла: " + e + "; ");
         } catch (Exception e) {
-            System.err.print("ошибка потока: " + e);
+            System.err.print("ошибка потока: " + e + "; ");
         } finally {
             s.close();
         }

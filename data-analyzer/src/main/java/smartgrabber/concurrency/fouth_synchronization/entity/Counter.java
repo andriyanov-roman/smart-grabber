@@ -1,4 +1,4 @@
-package smartgrabber.concurrency.fouth_synchronization;
+package smartgrabber.concurrency.fouth_synchronization.entity;
 
 /**
  * Created by randriyanov on 24.08.15.

@@ -1,5 +1,8 @@
 package smartgrabber.concurrency.fouth_synchronization;
 
+import smartgrabber.concurrency.fouth_synchronization.entity.SimpleThread;
+import smartgrabber.concurrency.fouth_synchronization.entity.SynchroMethod;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 

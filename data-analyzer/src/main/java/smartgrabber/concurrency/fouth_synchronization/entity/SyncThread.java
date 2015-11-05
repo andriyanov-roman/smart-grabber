@@ -1,4 +1,6 @@
-package smartgrabber.concurrency.fouth_synchronization;
+package smartgrabber.concurrency.fouth_synchronization.entity;
+
+import smartgrabber.concurrency.fouth_synchronization.entity.Resource;
 
 /**
  * Created by randriyanov on 24.08.15.

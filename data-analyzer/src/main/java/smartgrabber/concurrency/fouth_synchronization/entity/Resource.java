@@ -1,4 +1,4 @@
-package smartgrabber.concurrency.fouth_synchronization;
+package smartgrabber.concurrency.fouth_synchronization.entity;
 
 import java.io.FileWriter;
 import java.io.IOException;
