@@ -1,6 +1,6 @@
 package smartgrabber.collection_analyzer.map;
 
-import smartgrabber.collection_analyzer.IMemoryAnalyzer;
+import smartgrabber.collection_analyzer.interfaces.IMemoryAnalyzer;
 
 import java.util.Map;
 
@@ -9,6 +9,6 @@ import java.util.Map;
  */
 public interface IMapAnalyzer<T extends Map> extends IMemoryAnalyzer<T> {
 
-    Long findTime(T t);
+    Long insertionTime(T t);
     Long findMemory(T t);
 }

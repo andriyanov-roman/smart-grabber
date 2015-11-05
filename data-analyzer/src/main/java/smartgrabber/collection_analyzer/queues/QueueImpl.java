@@ -17,7 +17,7 @@ public class QueueImpl implements IQueueAnalyzer <Queue>{
     }
 
     @Override
-    public Long findTime(Queue queue) {
+    public Long insertionTime(Queue queue) {
         Long start = System.nanoTime();
 
         Long end = System.nanoTime();

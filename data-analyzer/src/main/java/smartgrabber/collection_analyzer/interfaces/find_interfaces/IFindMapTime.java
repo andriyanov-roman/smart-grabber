@@ -1,11 +1,11 @@
-package smartgrabber.collection_analyzer.find_interfaces;
+package smartgrabber.collection_analyzer.interfaces.find_interfaces;
 
-import java.util.Collection;
+import java.util.Map;
 
 /**
  * Created by mit_OK! on 24.10.2015.
  */
-public interface IFindCollectionTime<T extends Collection> extends IFindCollectionMemory {
+public interface IFindMapTime<T extends Map> {
    Long showTimeDeleting(T t);
    Long showTimeBeginInserting(T t);
    Long showTimeMiddleInserting(T t);

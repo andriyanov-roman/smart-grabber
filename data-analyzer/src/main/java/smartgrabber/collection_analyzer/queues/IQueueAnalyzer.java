@@ -1,7 +1,7 @@
 package smartgrabber.collection_analyzer.queues;
 
 
-import smartgrabber.collection_analyzer.IMemoryAnalyzer;
+import smartgrabber.collection_analyzer.interfaces.IMemoryAnalyzer;
 
 import java.util.Collection;
 
@@ -15,5 +15,5 @@ public interface IQueueAnalyzer <T extends Collection> extends IMemoryAnalyzer <
 
 
     @Override
-    Long findTime(T t);
+    Long insertionTime(T t);
 }

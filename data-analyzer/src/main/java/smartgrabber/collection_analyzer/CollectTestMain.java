@@ -1,5 +1,6 @@
 package smartgrabber.collection_analyzer;
 
+import smartgrabber.collection_analyzer.interfaces.ITimeAnalyzer;
 import smartgrabber.collection_analyzer.map.MapAnalyzer;
 
 import java.util.*;
@@ -10,9 +11,9 @@ import java.util.*;
 public class CollectTestMain {
     public static void main(String[] args) {
         ITimeAnalyzer<Map> analyzer = new MapAnalyzer();
-        analyzer.findTime(new HashMap<>());
-        analyzer.findTime(new LinkedHashMap<>());
-        analyzer.findTime(new TreeMap<>());
+        analyzer.insertionTime(new HashMap<>());
+        analyzer.insertionTime(new LinkedHashMap<>());
+        analyzer.insertionTime(new TreeMap<>());
         looksTime(analyzer);
     }
 

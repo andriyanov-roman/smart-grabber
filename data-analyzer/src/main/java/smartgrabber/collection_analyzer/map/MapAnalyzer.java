@@ -8,7 +8,7 @@ import java.util.Map;
 public class MapAnalyzer implements IMapAnalyzer<Map> {
 
     @Override
-    public Long findTime(Map map) {
+    public Long insertionTime(Map map) {
         return null;
     }
 
