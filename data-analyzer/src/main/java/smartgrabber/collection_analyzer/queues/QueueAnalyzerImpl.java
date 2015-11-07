@@ -11,6 +11,8 @@ import java.util.Queue;
 public class QueueAnalyzerImpl implements IQueueAnalyzer {
 
     private Queue queue;
+    private Long startTime;
+    private Long endTime;
 
     public QueueAnalyzerImpl(Queue queue) {
         this.queue = queue;
@@ -22,13 +24,16 @@ public class QueueAnalyzerImpl implements IQueueAnalyzer {
     }
 
 
-    @Override
-    public Long findTime(ITimer iTimer) {
 
-        return null;
+    @Override
+    public Long findTime(Executable executable) {
+        startTime = System.nanoTime();
+       // executable.execute();
+        endTime = System.nanoTime();
+        return endTime - startTime;
     }
 
-    @Override
+   /* @Override
     public String addElement(Object obj) {
         ITimer iTimer = new TimerImpl();
         queue.add(obj);
@@ -38,7 +43,7 @@ public class QueueAnalyzerImpl implements IQueueAnalyzer {
     @Override
     public String removeElement(Object o) {
         return null;
-    }
+    }*/
 }
 
 

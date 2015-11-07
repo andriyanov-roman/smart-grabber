@@ -15,8 +15,7 @@ public interface IQueueAnalyzer <T extends Queue> extends IMemoryAnalyzer <T>{
     Long findMemory(T t);
 
     @Override
-    Long findTime(ITimer iTimer);
+    Long findTime(Executable executable);
 
-    String addElement (Object o);
-    String removeElement (Object o);
+
 }
