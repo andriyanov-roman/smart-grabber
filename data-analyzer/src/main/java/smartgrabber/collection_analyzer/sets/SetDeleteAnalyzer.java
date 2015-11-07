@@ -12,9 +12,6 @@ public class SetDeleteAnalyzer extends SetAnalyzer {
     private long estimatedTime;
     private ArrayList<String> arrayList;
 
-
-
-
     @Override
     public Long insertionTime(Set set) {
         arrayList = new ArrayList<String>();
