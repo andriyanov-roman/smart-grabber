@@ -3,6 +3,6 @@ package smartgrabber.entity_SQLyzer;
 /**
  * Created by mit_OK! on 07.11.2015.
  */
-public interface IEntitySQLyzer {
-    String createInsertQuery(Employee e);// как ограничить только по классам с аннотацией @DataBaseTable?
+public interface IEntitySQLyzer<T, A extends DataBaseTable> {
+    String createInsertQuery(T t, A a);// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ @DataBaseTable?
 }
