@@ -5,15 +5,15 @@ import org.junit.Test;
 import java.util.*;
 
 import smartgrabber.collection_analyzer.queues.IQueueAnalyzer;
-import smartgrabber.collection_analyzer.queues.QueueImpl;
+import smartgrabber.collection_analyzer.queues.QueueAnalyzerImpl;
 /**
  * by Aliso4ka1313 on 30.10.2015.
  */
-public class QueueImplTest {
+public class QueueAnalyzerImplTest {
 
-    @Test
+   /* @Test
     public void findMemoryTest() {
-        IQueueAnalyzer<Queue> analyzer = new QueueImpl();
+        IQueueAnalyzer<Queue> analyzer = new QueueAnalyzerImpl();
         Deque<String> deque = new ArrayDeque<>();
         deque.add("aaaa");
         deque.add("bbb");
@@ -25,7 +25,7 @@ public class QueueImplTest {
     }
         @Test
         public void findTimeTest(){
-            IQueueAnalyzer<Queue> analyzer = new QueueImpl();
+            IQueueAnalyzer<Queue> analyzer = new QueueAnalyzerImpl();
             Deque<String> deque = new ArrayDeque<>();
             deque.add("aaaa");
             deque.add("bbb");
@@ -35,5 +35,5 @@ public class QueueImplTest {
 
             System.out.println(analyzer.findTime(deque));
 
-    }
+    }*/
 }
