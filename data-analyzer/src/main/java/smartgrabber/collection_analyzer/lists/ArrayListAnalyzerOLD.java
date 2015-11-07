@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by R-Tem on 04.11.2015.
  */
-public class ArrayListAnalyzer implements ICollectionAnalyzer<ArrayList> {
+public class ArrayListAnalyzerOLD implements ICollectionAnalyzer<ArrayList> {
 
     private long startTime;
     private long estimatedTime;
@@ -28,7 +28,6 @@ public class ArrayListAnalyzer implements ICollectionAnalyzer<ArrayList> {
 //            arrayList.add("TEST_STRING");
 //            estimatedTime = estimatedTime + (System.nanoTime() - startTime);
 //        }
-
         startTime = System.nanoTime();
         for (int i = 0; i < 1000000; i++) {
             arrayList.add("TEST_STRING");
