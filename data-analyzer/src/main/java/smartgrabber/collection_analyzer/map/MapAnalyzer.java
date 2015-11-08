@@ -5,7 +5,8 @@ import smartgrabber.collection_analyzer.map.IMapAnalyzer;
 import java.util.Map;
 
 
-public class MapAnalyzer implements IMapAnalyzer<Map> {
+
+/*public class MapAnalyzer implements IMapAnalyzer<Map> {
 
     @Override
     public Long findTime(Map map) {
@@ -16,4 +17,5 @@ public class MapAnalyzer implements IMapAnalyzer<Map> {
     public Long findMemory(Map map) {
         return null;
     }
-}
+}*/
+

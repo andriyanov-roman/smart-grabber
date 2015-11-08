@@ -1,14 +1,18 @@
 package smartgrabber.collection_analyzer.queues;
 
-import java.util.Collection;
+
 import java.util.Queue;
 
-/**
- * Created by Администратор on 07.11.2015.
- */
-public class AddElement extends Operation implements Executable{
+
+public class AddElement implements Executable{
+private Queue queue;
+
+    public AddElement(Queue queue) {
+        this.queue = queue;
+    }
+
     @Override
-    public void execute(Queue queue) {
+    public void execute() {
         queue.add("fff");
     }
 

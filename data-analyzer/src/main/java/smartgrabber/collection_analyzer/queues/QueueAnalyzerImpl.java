@@ -14,9 +14,9 @@ public class QueueAnalyzerImpl implements IQueueAnalyzer {
     private Long startTime;
     private Long endTime;
 
-    public QueueAnalyzerImpl(Queue queue) {
+    /*public QueueAnalyzerImpl(Queue queue) {
         this.queue = queue;
-    }
+    }*/
 
     @Override
     public Long findMemory(Queue queue) {
@@ -28,22 +28,12 @@ public class QueueAnalyzerImpl implements IQueueAnalyzer {
     @Override
     public Long findTime(Executable executable) {
         startTime = System.nanoTime();
-       // executable.execute();
+        executable.execute();
         endTime = System.nanoTime();
         return endTime - startTime;
     }
 
-   /* @Override
-    public String addElement(Object obj) {
-        ITimer iTimer = new TimerImpl();
-        queue.add(obj);
-        return "Time of adding"+iTimer.retrieveSpendingTime();
-    }
 
-    @Override
-    public String removeElement(Object o) {
-        return null;
-    }*/
 }
 
 
