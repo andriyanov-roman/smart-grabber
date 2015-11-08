@@ -1,4 +1,4 @@
-package smartgrabber.collection_analyzer.lists;
+package smartgrabber.collection_analyzer.total;
 
 import smartgrabber.collection_analyzer.interfaces.IMemoryAnalyzer;
 

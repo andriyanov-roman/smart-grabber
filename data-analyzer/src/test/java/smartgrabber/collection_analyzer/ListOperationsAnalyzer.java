@@ -1,7 +1,7 @@
 package smartgrabber.collection_analyzer;
 
 import org.junit.Test;
-import smartgrabber.collection_analyzer.lists.ArrayListAnalyzerOLD;
+import smartgrabber.collection_analyzer.total.ArrayListAnalyzer;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -41,7 +41,7 @@ public class ListOperationsAnalyzer {
     @Test
     public void insertionTime() {
         ArrayList arrayList = new ArrayList();
-        ArrayListAnalyzerOLD analyzer = new ArrayListAnalyzerOLD();
+        ArrayListAnalyzer analyzer = new ArrayListAnalyzer();
         System.out.println("For adding of 1 000 000 Strings into ArrayList you need: " + analyzer.insertionTime(arrayList) + " nanoSec.");
     }
 
@@ -49,7 +49,7 @@ public class ListOperationsAnalyzer {
     public void addingTime() {
 
         ArrayList arrayList = new ArrayList();
-        ArrayListAnalyzerOLD analyzer = new ArrayListAnalyzerOLD();
+        ArrayListAnalyzer analyzer = new ArrayListAnalyzer();
         System.out.println("To add 1 Object into ArrayList you need: " + analyzer.insertionTime(arrayList, "TEST_STRING") + " nanoSec.");
     }
 
@@ -63,7 +63,7 @@ public class ListOperationsAnalyzer {
         }
 
         ArrayList arrayList = new ArrayList();
-        ArrayListAnalyzerOLD analyzer = new ArrayListAnalyzerOLD();
+        ArrayListAnalyzer analyzer = new ArrayListAnalyzer();
 
         System.out.println("To add an array of " + arraySize + " Objects into ArrayList you need: "
                 + analyzer.insertionTime(arrayList, insArrayList) + " nanoSec.");
@@ -76,7 +76,7 @@ public class ListOperationsAnalyzer {
         for (int i = 0; i < 9; i++) {
             arrayList.add("TEST_STRING");
         }
-        ArrayListAnalyzerOLD analyzer = new ArrayListAnalyzerOLD();
+        ArrayListAnalyzer analyzer = new ArrayListAnalyzer();
 
         System.out.println("To add 1 Object into beginning of ArrayList you need: " + analyzer.insertionTime(arrayList, "TEST_STRING", 0) + " nanoSec.");
     }
@@ -88,7 +88,7 @@ public class ListOperationsAnalyzer {
         for (int i = 0; i < 9; i++) {
             arrayList.add("TEST_STRING");
         }
-        ArrayListAnalyzerOLD analyzer = new ArrayListAnalyzerOLD();
+        ArrayListAnalyzer analyzer = new ArrayListAnalyzer();
 
         System.out.println("To add 1 Object inside of ArrayList you need: " + analyzer.insertionTime(arrayList, "TEST_STRING", 3) + " nanoSec.");
 

@@ -1,6 +1,4 @@
-package smartgrabber.collection_analyzer.lists;
-
-import smartgrabber.collection_analyzer.lists.ICollectionAnalyzer;
+package smartgrabber.collection_analyzer.total;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,7 +8,7 @@ import java.util.List;
 /**
  * Created by R-Tem on 04.11.2015.
  */
-public class ArrayListAnalyzerOLD implements ICollectionAnalyzer<ArrayList> {
+public class ArrayListAnalyzer implements ICollectionAnalyzer<ArrayList> {
 
     private long startTime;
     private long estimatedTime;
