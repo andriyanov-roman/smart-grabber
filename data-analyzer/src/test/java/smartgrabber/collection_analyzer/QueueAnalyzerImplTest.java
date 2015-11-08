@@ -16,8 +16,9 @@ import smartgrabber.collection_analyzer.queues.RemoveElement;
 public class QueueAnalyzerImplTest {
     IQueueAnalyzer<Queue> analyzer = new QueueAnalyzerImpl();
     Deque<String> deque = new ArrayDeque<>();
+
     @BeforeClass
-    public void before(){
+    public void before() {
         deque.add("aaaa");
         deque.add("bbb");
         deque.add("ccc");
@@ -26,15 +27,17 @@ public class QueueAnalyzerImplTest {
     }
 
     @Test
-    public void findMemoryTest(){
+    public void findMemoryTest() {
         System.out.println(analyzer.findMemory(deque) + " bytes");
     }
-        @Test
-        public void findTimeTest(){
-            AddElement addElement = new AddElement(deque);
-            RemoveElement removeElement = new RemoveElement(deque);
-            System.out.println(analyzer.findTime(addElement));
-            System.out.println(analyzer.findTime(removeElement));
+
+
+    @Test
+    public void findTimeTest() {
+        AddElement addElement = new AddElement(deque);
+        RemoveElement removeElement = new RemoveElement(deque);
+        System.out.println(analyzer.findTime(addElement));
+        System.out.println(analyzer.findTime(removeElement));
 
     }
 }
