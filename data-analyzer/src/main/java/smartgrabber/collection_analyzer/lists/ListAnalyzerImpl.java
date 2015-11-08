@@ -19,6 +19,20 @@ abstract class ListAnalyzerImpl<T> implements IListAnalyzer {
         return endExecutionTime-startExecutionTime;
     }
 
+    public Long findTimeForAddingElements(IExecutor iExecutor, T t) {
+        Long startExecutionTime = System.nanoTime();
+        iExecutor.addElement(t);
+        Long endExecutionTime = System.nanoTime();
+        return endExecutionTime-startExecutionTime;
+    }
+
+    public Long findTimeForMiddleAdding(IExecutor iExecutor, T t) {
+        Long startExecutionTime = System.nanoTime();
+        iExecutor.addElement(t);
+        Long endExecutionTime = System.nanoTime();
+        return endExecutionTime-startExecutionTime;
+    }
+
     @Override
     public Long retrieveUsedMemory() {
         return RamUsageEstimator.sizeOf(list);
