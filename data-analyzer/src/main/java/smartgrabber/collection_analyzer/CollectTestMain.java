@@ -2,7 +2,7 @@ package smartgrabber.collection_analyzer;
 
 
 
-import smartgrabber.collection_analyzer.map.MapAnalyzer;
+//import smartgrabber.collection_analyzer.map.MapAnalyzer;
 
 import java.util.*;
 
