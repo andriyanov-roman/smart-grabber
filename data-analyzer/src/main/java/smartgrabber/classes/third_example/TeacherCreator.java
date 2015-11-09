@@ -1,16 +1,26 @@
 package smartgrabber.classes.third_example;
 
 
-public class TeacherCreator {
+class TeacherCreator {
 
     public static AbstractTeacher createTeacher(int id) {
 // объявление класса внутри метода
+        final int[] i = {0};
+        final Integer[] intger = new Integer[10];
         class Rector extends AbstractTeacher {
             Rector (int id) {
                 super(id);
             }
             @Override
             public boolean excludeStudent(String name) {
+                intger[0] = 10;
+                intger[1] = 10;
+                intger[2] = 10;
+                intger[3] = 10;
+                intger[4] = 10;
+                intger[5] = 10;
+                intger[6] = 10;
+                i[0] = 9;
                 if (name != null) { // изменение статуса студента в базе данных
                     return true;
                 } else {
