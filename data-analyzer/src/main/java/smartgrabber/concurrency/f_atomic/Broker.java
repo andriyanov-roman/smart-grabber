@@ -1,4 +1,4 @@
-package smartgrabber.concurrency.g_atomic;
+package smartgrabber.concurrency.f_atomic;
 
 /**
  * Created by randriyanov on 24.08.15.

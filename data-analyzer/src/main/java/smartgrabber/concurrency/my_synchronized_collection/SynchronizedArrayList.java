@@ -1,4 +1,4 @@
-package synchronized_collection;
+package smartgrabber.concurrency.my_synchronized_collection;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package smartgrabber.concurrency.g_atomic;
+package smartgrabber.concurrency.f_atomic;
 
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;

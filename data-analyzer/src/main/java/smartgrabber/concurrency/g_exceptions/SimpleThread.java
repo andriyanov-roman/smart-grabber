@@ -1,4 +1,4 @@
-package smartgrabber.concurrency.f_exceptions;
+package smartgrabber.concurrency.g_exceptions;
 
 /**
  * Created by randriyanov on 24.08.15.
