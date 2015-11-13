@@ -22,7 +22,7 @@ package smartgrabber.concurrency.my_synchronized_collection;
  *         Similarly, create copies of your internal mutable objects when
  *         necessary to avoid returning the originals in your methods.
  */
-public class ImmutableRGB {
+final public class ImmutableRGB {
     // Values must be between 0 and 255.
     final private int red;
     final private int green;
@@ -50,7 +50,6 @@ public class ImmutableRGB {
         this.name = name;
     }
 
-
     public int getRGB() {
         return ((red << 16) | (green << 8) | blue);
     }
@@ -60,7 +59,8 @@ public class ImmutableRGB {
     }
 
     public ImmutableRGB invert() {
-        return new ImmutableRGB(255 - red,
+        return new ImmutableRGB(
+                255 - red,
                 255 - green,
                 255 - blue,
                 "Inverse of " + name);
