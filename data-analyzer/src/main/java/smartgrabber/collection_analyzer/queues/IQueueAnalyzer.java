@@ -11,11 +11,11 @@ import java.util.Queue;
  * by Aliso4ka1313 on 30.10.2015.
  */
 public interface IQueueAnalyzer <T extends Queue> extends IMemoryAnalyzer <T>{
-    @Override
+   /* @Override
     Long findMemory(T t);
 
     @Override
-    Long findTime(Executable executable);
+    Long findTime(Executable executable);*/
 
 
 }
