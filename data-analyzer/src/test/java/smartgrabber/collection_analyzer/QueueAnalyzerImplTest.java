@@ -9,16 +9,19 @@ import smartgrabber.collection_analyzer.queues.AddElement;
 import smartgrabber.collection_analyzer.queues.IQueueAnalyzer;
 import smartgrabber.collection_analyzer.queues.QueueAnalyzerImpl;
 import smartgrabber.collection_analyzer.queues.RemoveElement;
+import smartgrabber.collection_analyzer.queues.by_Artem.IQueueAnalyzerByArtem;
+import smartgrabber.collection_analyzer.queues.by_Artem.QueueAnalyzerImplByArtem;
 
 /**
  * by Aliso4ka1313 on 30.10.2015.
  */
 public class QueueAnalyzerImplTest {
-    IQueueAnalyzer<Queue> analyzer = new QueueAnalyzerImpl();
-    Deque<String> deque = new ArrayDeque<>();
+    IQueueAnalyzerByArtem<Queue> analyzer = new QueueAnalyzerImplByArtem();
+    private static Deque<String> deque = new ArrayDeque<>();
 
-    @BeforeClass
-    public void before() {
+    @BeforeClass // поскольку эта аннотация выполняется перед созданнием самого класса
+                 // метод должен быть статическим и использовать стат. контекст
+    public static void before() {
         deque.add("aaaa");
         deque.add("bbb");
         deque.add("ccc");

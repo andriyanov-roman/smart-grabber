@@ -8,7 +8,7 @@ import java.util.Queue;
 /**
  * by Aliso4ka1313 on 30.10.2015.
  */
-public class QueueAnalyzerImpl implements IQueueAnalyzer {
+public class QueueAnalyzerImpl /*implements IQueueAnalyzer*/ {
 
     private Queue queue;
     private Long startTime;
@@ -18,14 +18,14 @@ public class QueueAnalyzerImpl implements IQueueAnalyzer {
         this.queue = queue;
     }*/
 
-    @Override
+//    @Override
     public Long findMemory(Queue queue) {
         return RamUsageEstimator.sizeOf(queue);
     }
 
 
 
-    @Override
+//    @Override
     public Long findTime(Executable executable) {
         startTime = System.nanoTime();
         executable.execute();
