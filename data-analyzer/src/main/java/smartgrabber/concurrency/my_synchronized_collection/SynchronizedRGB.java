@@ -31,12 +31,17 @@ public class SynchronizedRGB {
         this.name = name;
     }
 
-    public void setRGB(int red,
+    public  void setRGB(int red,
                     int green,
                     int blue,
                     String name) {
         check(red, green, blue);
         synchronized (this) {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             this.red = red;
             this.green = green;
             this.blue = blue;

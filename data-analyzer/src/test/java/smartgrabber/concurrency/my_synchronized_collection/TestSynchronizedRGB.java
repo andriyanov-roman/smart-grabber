@@ -36,28 +36,35 @@ public class TestSynchronizedRGB {
         Thread t1 = new Thread(new Runnable() {
             @Override
             public void run() {
+                // Change color
+                color.setRGB(0, 0, 255, "blue");
                 // Pause for 0.5 second
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                // Change color
-                color.setRGB(0, 0, 255, "blue");
             }
         });
 
-        int myColorInt = color.getRGB();      //Statement 1
+        int myColorInt = color.getRGB();       //Statement 1
         t1.start();
+        color.setRGB(255, 255, 0, "yellow");
+        myColorInt = color.getRGB();       //Statement 1
+        String myColorName = color.getName();  //Statement 2
+        System.out.println("myColorInt: " + myColorInt + " / myColorName: " + myColorName);
+
         Thread.sleep(1000);
-        String myColorName = color.getName(); //Statement 2
+        color.setRGB(0, 255, 0, "green");
+        myColorName = color.getName();  //Statement 2
         System.out.println("myColorInt: " + myColorInt + " / myColorName: " + myColorName);
         System.out.println("Actually color.getRGB() is: " + color.getRGB());
 
+        Thread.sleep(1000);
         // To avoid this outcome, the two statements must be bound together:
         synchronized (color) {
-            myColorInt = color.getRGB();    //Statement 1
-            myColorName = color.getName();  //Statement 2
+            myColorInt = color.getRGB();      //Statement 1
+            myColorName = color.getName();    //Statement 2
         }
 
         System.out.println("myColorInt: " + myColorInt + " / myColorName: " + myColorName);
