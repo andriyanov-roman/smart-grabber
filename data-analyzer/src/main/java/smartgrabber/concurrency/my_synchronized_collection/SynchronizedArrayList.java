@@ -227,12 +227,14 @@ public class SynchronizedArrayList<E> extends AbstractList<E>
      */
     public synchronized boolean add(E e) {
         try {
-            Thread.sleep(4000);
+            System.out.println("adding started");
+            Thread.sleep(3000);
         } catch (InterruptedException e1) {
             e1.printStackTrace();
         }
         ensureCapacityInternal(size + 1);  // Increments modCount!!
         elementData[size++] = e;
+        System.out.println("adding ended");
         return true;
     }
 
@@ -298,16 +300,19 @@ public class SynchronizedArrayList<E> extends AbstractList<E>
      * @return <tt>true</tt> if this list contained the specified element
      */
     public synchronized boolean remove(Object o) {
+        System.out.println("removing started");
         if (o == null) {
             for (int index = 0; index < size; index++)
                 if (elementData[index] == null) {
                     fastRemove(index);
+                    System.out.println("removing ended");
                     return true;
                 }
         } else {
             for (int index = 0; index < size; index++)
                 if (o.equals(elementData[index])) {
                     fastRemove(index);
+                    System.out.println("removing ended");
                     return true;
                 }
         }

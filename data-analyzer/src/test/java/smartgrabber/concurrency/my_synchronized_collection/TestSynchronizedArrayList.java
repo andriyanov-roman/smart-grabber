@@ -9,45 +9,73 @@ import org.junit.Test;
 public class TestSynchronizedArrayList {
 
     private static SynchronizedArrayList syncArrayList;
-    private static Thread t1;
-    private static Thread t2;
+    private static Thread addThread;
+    private static Thread removeThread;
+
+    // Display a message, preceded by
+    // the name of the current addThread
+    static void threadMessage(String message) {
+        String threadName =
+                Thread.currentThread().getName();
+        System.out.format("%s: %s%n",
+                threadName,
+                message);
+    }
 
     @BeforeClass
-    public static void ini(){
+    public static void ini() {
         syncArrayList = new SynchronizedArrayList();
 
-        t1 = new Thread(new Runnable() {
+        addThread = new Thread(new Runnable() {
+
             @Override
             public void run() {
-                syncArrayList.add("test from t1");
+                Thread.currentThread().setName("Thread-add");
+                threadMessage("started");
+                syncArrayList.add("'test from addThread'");
+                threadMessage("ended");
             }
         });
 
-        t2 = new Thread(new Runnable() {
+        removeThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                syncArrayList.remove("test1");
+                Thread.currentThread().setName("Thread-remove");
+                threadMessage("started");
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    threadMessage("I wasn't done!");
+                }
+                syncArrayList.remove("'test1'");
+                threadMessage("ended");
             }
         });
     }
 
     @Test
-    public void test(){
-        syncArrayList.add("test1");
-        System.out.println(syncArrayList.size() + " " + syncArrayList.get(0));
-        t1.start();
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        t2.start();
-        System.out.println(syncArrayList.size() + " " + syncArrayList.get(0));
-        try {
-            Thread.sleep(4500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println(syncArrayList.size() + " " + syncArrayList.get(0));
+    public void test() throws InterruptedException {
+        syncArrayList.add("'test1'");
+        System.out.println("size: " + syncArrayList.size() + " item0: " + syncArrayList.get(0) + "\n");
+        addThread.start();
+        Thread.sleep(500);
+        System.out.println("main slept 0.5s");
+        removeThread.start();
+        System.out.println("\nsize: " + syncArrayList.size() + " item0: " + syncArrayList.get(0));
+    }
+
+    @Test
+    public void testWithInterrupting() throws InterruptedException {
+        syncArrayList.add("'test1'");
+        System.out.println("size: " + syncArrayList.size() + " item0: " + syncArrayList.get(0) + "\n");
+        addThread.start();
+        Thread.sleep(500);
+        System.out.println("main slept 0.5s");
+        removeThread.start();
+        Thread.sleep(100);
+        System.out.println("main slept 0.1s");
+        removeThread.interrupt();
+        removeThread.join();
+        System.out.println("\nsize: " + syncArrayList.size() + " item0: " + syncArrayList.get(0));
     }
 }
