@@ -520,7 +520,7 @@ public class SyncArrayList<E> extends AbstractList<E>
      * @param element element to be inserted
      * @throws IndexOutOfBoundsException {@inheritDoc}
      */
-    public synchronized void add(int index, E element) {
+    public void add(int index, E element) {
         synchronized (elementData) {
             if (size() < maxSize) {
                 System.out.println("adding started");
