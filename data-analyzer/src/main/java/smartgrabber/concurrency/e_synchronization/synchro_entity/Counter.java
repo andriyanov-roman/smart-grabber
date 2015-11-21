@@ -1,4 +1,4 @@
-package smartgrabber.concurrency.e_synchronization.entity;
+package smartgrabber.concurrency.e_synchronization.synchro_entity;
 
 /**
  * Created by randriyanov on 24.08.15.

@@ -9,6 +9,10 @@ import java.util.ArrayList;
 
 /**
  * Created by R-Tem on 05.11.2015.
+ *
+ * Этот класс сождавался путем простого наследования AbstractList
+ * и имплементации RandomAccess, Cloneable, java.io.Serializable.
+ *
  */
 public class SynchronizedArrayList<E> extends AbstractList<E>
         implements List<E>, RandomAccess, Cloneable, java.io.Serializable

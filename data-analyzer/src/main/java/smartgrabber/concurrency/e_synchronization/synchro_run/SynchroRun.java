@@ -1,7 +1,4 @@
-package smartgrabber.concurrency.e_synchronization;
-
-import smartgrabber.concurrency.e_synchronization.entity.Resource;
-import smartgrabber.concurrency.e_synchronization.entity.SyncThread;
+package smartgrabber.concurrency.e_synchronization.synchro_run;
 
 import java.io.IOException;
 

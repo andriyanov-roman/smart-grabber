@@ -1,4 +1,4 @@
-package smartgrabber.concurrency.e_synchronization.entity;
+package smartgrabber.concurrency.e_synchronization.synchro_method;
 
 /*
  * A <i>thread</i> is a thread of execution in a program. The Java

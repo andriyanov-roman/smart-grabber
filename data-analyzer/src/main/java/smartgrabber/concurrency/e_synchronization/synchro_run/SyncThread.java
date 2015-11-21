@@ -1,4 +1,6 @@
-package smartgrabber.concurrency.e_synchronization.entity;
+package smartgrabber.concurrency.e_synchronization.synchro_run;
+
+import smartgrabber.concurrency.e_synchronization.synchro_run.Resource;
 
 /**
  * Created by randriyanov on 24.08.15.

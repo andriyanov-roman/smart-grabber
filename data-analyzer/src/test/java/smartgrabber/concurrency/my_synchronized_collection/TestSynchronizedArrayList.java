@@ -44,11 +44,11 @@ public class TestSynchronizedArrayList {
                 threadMessage("started");
                 try {
                     Thread.sleep(500);
+                    syncArrayList.remove("'test1'");
+                    threadMessage("ended");
                 } catch (InterruptedException e) {
                     threadMessage("I wasn't done!");
                 }
-                syncArrayList.remove("'test1'");
-                threadMessage("ended");
             }
         });
     }

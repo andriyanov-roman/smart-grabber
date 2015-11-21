@@ -1,7 +1,7 @@
-package smartgrabber.concurrency.e_synchronization;
+package smartgrabber.concurrency.e_synchronization.synchro_method;
 
-import smartgrabber.concurrency.e_synchronization.entity.SimpleThread;
-import smartgrabber.concurrency.e_synchronization.entity.SynchroMethod;
+import smartgrabber.concurrency.e_synchronization.synchro_method.SimpleThread;
+import smartgrabber.concurrency.e_synchronization.synchro_method.SynchroMethod;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

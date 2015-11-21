@@ -1,17 +1,16 @@
-package smartgrabber.concurrency.e_synchronization.entity;
+package smartgrabber.concurrency.e_synchronization.synchro_method;
 
+
+import smartgrabber.concurrency.my_synchronized_collection.SyncArrayList;
 
 import java.util.ArrayList;
 
 public class SynchroMethod {
 
-    private ArrayList<String> arrayList = new ArrayList<>();
+    private SyncArrayList<String> arrayList = new SyncArrayList<>();
 
-    public ArrayList<String> getArrayList() {
+    public SyncArrayList<String> getArrayList() {
         return arrayList;
-    }
-    public void setArrayList(ArrayList<String> arrayList) {
-        this.arrayList = arrayList;
     }
 
     public void addNewElement() {

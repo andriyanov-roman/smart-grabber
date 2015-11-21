@@ -1,4 +1,4 @@
-package smartgrabber.concurrency.e_synchronization.entity;
+package smartgrabber.concurrency.e_synchronization.synchro_run;
 
 import java.io.FileWriter;
 import java.io.IOException;

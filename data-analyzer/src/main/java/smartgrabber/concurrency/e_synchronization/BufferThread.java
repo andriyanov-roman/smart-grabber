@@ -13,13 +13,8 @@ public class BufferThread {
             public void run() {
                 synchronized (s) {
                     while (BufferThread.counter++ < 3) {
-
                         s.append("A");
-
-                        System.out.print("> " + counter + " ");
-
-                        System.out.println(s);
-
+                        System.out.println("> " + counter + " " + s);
                         try {
                             Thread.sleep(500);
                         } catch (InterruptedException e) {
@@ -29,7 +24,7 @@ public class BufferThread {
                 } // конец synchronized-блока
             }
         }.start();
-        Thread.sleep(100);
+        Thread.sleep(5000);
         while (BufferThread.counter++ < 6) {
             System.out.print("< " + counter + " ");
 
