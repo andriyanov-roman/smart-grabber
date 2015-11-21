@@ -1,4 +1,4 @@
-package java.repo;
+package repo;
 
 import entity.Employee;
 import org.junit.Before;
@@ -17,23 +17,26 @@ public class PersistEmployee {
 
     public static Employee employee;
     static {
-        employee.setName("Petro");
+
     }
 
     @Before
     public void beforeClass() {
+        employee = new Employee();
+        employee.setName("Petro");
         emf = Persistence.createEntityManagerFactory("company");
         em = emf.createEntityManager();
     }
 
     @Test
-    public void persistAddress() {
+    public void persistEmployee() {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
         em.persist(employee);
         tx.commit();
 
-
+        em.close();
+        emf.close();
     }
 
 }

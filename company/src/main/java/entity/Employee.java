@@ -6,7 +6,6 @@ import javax.persistence.*;
  * Created by randriyanov on 21.11.15.
  */
 @Entity
-@Table
 public class Employee {
     @Id
     @GeneratedValue
