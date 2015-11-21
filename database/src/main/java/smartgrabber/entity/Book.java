@@ -1,5 +1,7 @@
 package smartgrabber.entity;
 
+import com.sun.istack.internal.NotNull;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,9 +12,10 @@ import javax.persistence.*;
         @NamedQuery(name = "findBookByAuthor",
         query = "SELECT b FROM Book b WHERE b.author =:author")}
 )
+@Table(name = "book")
 public class Book {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String title;
     private Float price;
@@ -20,7 +23,9 @@ public class Book {
     private String isbn;
     private Integer nbOfPage;
     private Boolean illustrations;
+
     @Column(name = "book_author")
+    @NotNull
     private String author;
 
     public Book(String title, Float price, String description, String isbn, Integer nbOfPage, Boolean illustrations) {

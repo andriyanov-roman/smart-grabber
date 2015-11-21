@@ -7,9 +7,6 @@ import javax.persistence.*;
         @SecondaryTable(name = "city"),
         @SecondaryTable(name = "country")
 })
-@NamedQueries({@NamedQuery(name = "findBookByTitle",
-        query = "SELECT b FROM Book b WHERE b.title ='H2G2'")}
-)
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,6 +21,17 @@ public class Address {
     private String zipcode;
     @Column(table = "country")
     private String country;
+
+    @OneToOne(mappedBy = "address")
+    private Customer customer;
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     public Long getId() {
         return id;
