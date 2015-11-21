@@ -2,19 +2,12 @@ package smartgrabber.concurrency.my_synchronized_collection;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.Calendar;
+import smartgrabber.sync_arraylist.SyncArrayList;
 
 /**
  * Created by R-Tem on 13.11.2015.
  */
 public class TestSyncArrayList {
-
-    public static final String WITH_LISTENER = "With Listener";
 
     private static SyncArrayList syncArrayList;
     private static Thread addThread;
@@ -76,21 +69,15 @@ public class TestSyncArrayList {
     }
 
     public static void main(String[] args) {
-        syncArrayList = new SyncArrayList(WITH_LISTENER);
+        syncArrayList = new SyncArrayList((short)3);
 
         addThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 Thread.currentThread().setName("Thread-adding");
                 threadMessage("started");
-                int counter = 0;
-                for (int i = 0; i < 20; i++) {
-                    syncArrayList.add("Test Element " + counter++);
-                    try {
-                        Thread.sleep(10);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                for (int i = 0; i < 15; i++) {
+                    syncArrayList.add("Test Element " + i);
                 }
             }
         });

@@ -1,7 +1,17 @@
-package smartgrabber.concurrency.my_synchronized_collection;
+package smartgrabber.sync_arraylist;
 
 /**
  * Created by R-Tem on 16.11.2015.
+ *
+ * This class created by copying java.util.ArrayList
+ * <p>
+ * Methods which have been modified:
+ *  - all constructors
+ *  - all public methods are synchronized
+ *  - add(E e)
+ *  - add(int index, E element)
+ *
+ *  TODO: realize caching
  */
 
 /*
@@ -97,7 +107,7 @@ public class SyncArrayList<E> extends AbstractList<E>
     /**
      * Default initial capacity.
      */
-    private static final int DEFAULT_CAPACITY = 10;
+    private static final short DEFAULT_CAPACITY = 10;
 
     /**
      * Shared empty array instance used for empty instances.
@@ -126,29 +136,46 @@ public class SyncArrayList<E> extends AbstractList<E>
      */
     private int size;
 
-    public static final int MAX_SIZE = 5;
+    private static final short DEFAULT_MAX_SIZE = 10;
+
+    private short maxSize = DEFAULT_MAX_SIZE;
 
     private Thread occupancyListener = new Thread(new Runnable() {
         @Override
         public void run() {
             Thread.currentThread().setName("Thread-occupancyListener");
             System.out.println("I`m listening to myself");
+            if (maxSize == DEFAULT_MAX_SIZE) {
+                insides(DEFAULT_MAX_SIZE);
+            } else insides(maxSize);
+
+        }
+
+        private void insides(short maxSize) {
             while (true) {
                 synchronized (elementData) {
-                    if (size() >= MAX_SIZE) {
+                    if (size() >= maxSize) {
                         remove(0);
                         elementData.notifyAll();
                         System.out.println("notifyAll");
                     }
                 }
                 try {
-                    Thread.sleep(10);
+                    Thread.sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
         }
     });
+
+    /**
+     * Constructs an empty list with an initial capacity of ten.
+     */
+    public SyncArrayList() {
+        this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
+        occupancyListener.start();
+    }
 
     /**
      * Constructs an empty list with the specified initial capacity.
@@ -160,29 +187,23 @@ public class SyncArrayList<E> extends AbstractList<E>
     public SyncArrayList(int initialCapacity) {
         if (initialCapacity > 0) {
             this.elementData = new Object[initialCapacity];
+            occupancyListener.start();
         } else if (initialCapacity == 0) {
             this.elementData = EMPTY_ELEMENTDATA;
+            occupancyListener.start();
         } else {
             throw new IllegalArgumentException("Illegal Capacity: " +
                     initialCapacity);
         }
     }
 
-    /**
-     * Constructs an empty list with an initial capacity of ten.
-     */
-    public SyncArrayList() {
+    /*
+    * Constructs an empty list with the specified max size.
+    */
+    public SyncArrayList(short maxSize) {
+        this.maxSize = maxSize;
         this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
-    }
-
-    public SyncArrayList(String s) {
-        if (s.equals("With Listener")) {
-            this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
-            occupancyListener.start();
-        } else {
-            throw new IllegalArgumentException("Illegal Flag: " +
-                    s + "\n    Use String: 'With Listener'");
-        }
+        occupancyListener.start();
     }
 
     /**
@@ -203,6 +224,7 @@ public class SyncArrayList<E> extends AbstractList<E>
             // replace with empty array.
             this.elementData = EMPTY_ELEMENTDATA;
         }
+        occupancyListener.start();
     }
 
     /**
@@ -476,7 +498,7 @@ public class SyncArrayList<E> extends AbstractList<E>
      */
     public boolean add(E e) {
         synchronized (elementData) {
-            if (size() < MAX_SIZE) {
+            if (size() < maxSize) {
                 System.out.println("adding started");
                 ensureCapacityInternal(size + 1);  // Increments modCount!!
                 elementData[size++] = e;
@@ -501,15 +523,81 @@ public class SyncArrayList<E> extends AbstractList<E>
      * @throws IndexOutOfBoundsException {@inheritDoc}
      */
     public synchronized void add(int index, E element) {
+        synchronized (elementData) {
+            if (size() < maxSize) {
+                System.out.println("adding started");
+                rangeCheckForAdd(index);
+
+                ensureCapacityInternal(size + 1);  // Increments modCount!!
+                System.arraycopy(elementData, index, elementData, index + 1,
+                        size - index);
+                elementData[index] = element;
+                size++;
+                System.out.println("adding ended");
+            } else try {
+                System.out.println("elementData is waiting");
+                elementData.wait();
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+
+
+    /**
+     * Appends all of the elements in the specified collection to the end of
+     * this list, in the order that they are returned by the
+     * specified collection's Iterator.  The behavior of this operation is
+     * undefined if the specified collection is modified while the operation
+     * is in progress.  (This implies that the behavior of this call is
+     * undefined if the specified collection is this list, and this
+     * list is nonempty.)
+     *
+     * @param c collection containing elements to be added to this list
+     * @return <tt>true</tt> if this list changed as a result of the call
+     * @throws NullPointerException if the specified collection is null
+     */
+    public synchronized boolean addAll(Collection<? extends E> c) {
         System.out.println("adding started");
+        Object[] a = c.toArray();
+        int numNew = a.length;
+        ensureCapacityInternal(size + numNew);  // Increments modCount
+        System.arraycopy(a, 0, elementData, size, numNew);
+        size += numNew;
+        System.out.println("adding ended");
+        return numNew != 0;
+    }
+
+    /**
+     * Inserts all of the elements in the specified collection into this
+     * list, starting at the specified position.  Shifts the element
+     * currently at that position (if any) and any subsequent elements to
+     * the right (increases their indices).  The new elements will appear
+     * in the list in the order that they are returned by the
+     * specified collection's iterator.
+     *
+     * @param index index at which to insert the first element from the
+     *              specified collection
+     * @param c     collection containing elements to be added to this list
+     * @return <tt>true</tt> if this list changed as a result of the call
+     * @throws IndexOutOfBoundsException {@inheritDoc}
+     * @throws NullPointerException      if the specified collection is null
+     */
+    public synchronized boolean addAll(int index, Collection<? extends E> c) {
         rangeCheckForAdd(index);
 
-        ensureCapacityInternal(size + 1);  // Increments modCount!!
-        System.arraycopy(elementData, index, elementData, index + 1,
-                size - index);
-        elementData[index] = element;
-        size++;
-        System.out.println("adding ended");
+        Object[] a = c.toArray();
+        int numNew = a.length;
+        ensureCapacityInternal(size + numNew);  // Increments modCount
+
+        int numMoved = size - index;
+        if (numMoved > 0)
+            System.arraycopy(elementData, index, elementData, index + numNew,
+                    numMoved);
+
+        System.arraycopy(a, 0, elementData, index, numNew);
+        size += numNew;
+        return numNew != 0;
     }
 
     /**
@@ -569,8 +657,28 @@ public class SyncArrayList<E> extends AbstractList<E>
                     return true;
                 }
         }
-        System.out.println("removing ended");
+        System.out.println("Removing false. No such Object in the arrayList.");
         return false;
+    }
+
+    /**
+     * Removes from this list all of its elements that are contained in the
+     * specified collection.
+     *
+     * @param c collection containing elements to be removed from this list
+     * @return {@code true} if this list changed as a result of the call
+     * @throws ClassCastException   if the class of an element of this list
+     *                              is incompatible with the specified collection
+     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
+     * @throws NullPointerException if this list contains a null element and the
+     *                              specified collection does not permit null elements
+     *                              (<a href="Collection.html#optional-restrictions">optional</a>),
+     *                              or if the specified collection is null
+     * @see Collection#contains(Object)
+     */
+    public synchronized boolean removeAll(Collection<?> c) {
+        Objects.requireNonNull(c);
+        return batchRemove(c, false);
     }
 
     /*
@@ -598,62 +706,6 @@ public class SyncArrayList<E> extends AbstractList<E>
             elementData[i] = null;
 
         size = 0;
-    }
-
-    /**
-     * Appends all of the elements in the specified collection to the end of
-     * this list, in the order that they are returned by the
-     * specified collection's Iterator.  The behavior of this operation is
-     * undefined if the specified collection is modified while the operation
-     * is in progress.  (This implies that the behavior of this call is
-     * undefined if the specified collection is this list, and this
-     * list is nonempty.)
-     *
-     * @param c collection containing elements to be added to this list
-     * @return <tt>true</tt> if this list changed as a result of the call
-     * @throws NullPointerException if the specified collection is null
-     */
-    public synchronized boolean addAll(Collection<? extends E> c) {
-        System.out.println("adding started");
-        Object[] a = c.toArray();
-        int numNew = a.length;
-        ensureCapacityInternal(size + numNew);  // Increments modCount
-        System.arraycopy(a, 0, elementData, size, numNew);
-        size += numNew;
-        System.out.println("adding ended");
-        return numNew != 0;
-    }
-
-    /**
-     * Inserts all of the elements in the specified collection into this
-     * list, starting at the specified position.  Shifts the element
-     * currently at that position (if any) and any subsequent elements to
-     * the right (increases their indices).  The new elements will appear
-     * in the list in the order that they are returned by the
-     * specified collection's iterator.
-     *
-     * @param index index at which to insert the first element from the
-     *              specified collection
-     * @param c     collection containing elements to be added to this list
-     * @return <tt>true</tt> if this list changed as a result of the call
-     * @throws IndexOutOfBoundsException {@inheritDoc}
-     * @throws NullPointerException      if the specified collection is null
-     */
-    public synchronized boolean addAll(int index, Collection<? extends E> c) {
-        rangeCheckForAdd(index);
-
-        Object[] a = c.toArray();
-        int numNew = a.length;
-        ensureCapacityInternal(size + numNew);  // Increments modCount
-
-        int numMoved = size - index;
-        if (numMoved > 0)
-            System.arraycopy(elementData, index, elementData, index + numNew,
-                    numMoved);
-
-        System.arraycopy(a, 0, elementData, index, numNew);
-        size += numNew;
-        return numNew != 0;
     }
 
     /**
@@ -710,26 +762,6 @@ public class SyncArrayList<E> extends AbstractList<E>
      */
     private String outOfBoundsMsg(int index) {
         return "Index: " + index + ", Size: " + size;
-    }
-
-    /**
-     * Removes from this list all of its elements that are contained in the
-     * specified collection.
-     *
-     * @param c collection containing elements to be removed from this list
-     * @return {@code true} if this list changed as a result of the call
-     * @throws ClassCastException   if the class of an element of this list
-     *                              is incompatible with the specified collection
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException if this list contains a null element and the
-     *                              specified collection does not permit null elements
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>),
-     *                              or if the specified collection is null
-     * @see Collection#contains(Object)
-     */
-    public synchronized boolean removeAll(Collection<?> c) {
-        Objects.requireNonNull(c);
-        return batchRemove(c, false);
     }
 
     /**

@@ -1,9 +1,7 @@
 package smartgrabber.concurrency.e_synchronization.synchro_method;
 
 
-import smartgrabber.concurrency.my_synchronized_collection.SyncArrayList;
-
-import java.util.ArrayList;
+import smartgrabber.sync_arraylist.SyncArrayList;
 
 public class SynchroMethod {
 
