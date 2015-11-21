@@ -17,7 +17,7 @@ public class PersistEmployee {
 
     public static Employee employee;
     static {
-
+        employee.setName("Petro");
     }
 
     @Before
