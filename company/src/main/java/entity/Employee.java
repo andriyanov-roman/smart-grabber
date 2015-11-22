@@ -6,13 +6,15 @@ import javax.persistence.*;
  * Created by randriyanov on 21.11.15.
  */
 @Entity
-@Table()
+@Table
 public class Employee {
     @Id
     @GeneratedValue
+    @Column(name="employee_id")
     private  Long id;
-
     private String name;
+    @ManyToOne
+    private Company company;
 
     public Employee(){}
 
@@ -35,6 +37,14 @@ public class Employee {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     @Override
