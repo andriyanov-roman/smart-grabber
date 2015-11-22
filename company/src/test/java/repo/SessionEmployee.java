@@ -43,6 +43,6 @@ public class SessionEmployee {
     }
     @After
     public void after(){
-        session.close();
+        if(!session.isOpen()) session.close();
     }
 }
