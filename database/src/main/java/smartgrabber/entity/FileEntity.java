@@ -1,6 +1,6 @@
 package smartgrabber.entity;
 
-import examples.enums.FileFormats;
+import smartgrabber.enums.FileFormats;
 
 import javax.persistence.*;
 import java.util.Date;
