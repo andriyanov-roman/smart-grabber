@@ -36,7 +36,7 @@ public class SessionEmployee {
 //        SQLQuery sqlQuery = session.createSQLQuery(sql);
 //        books = sqlQuery.list();
 //        System.out.println(books);
-        session.persist(employee);
+        //session.persist(employee);
         session.save(employee);
         transaction.commit();
 
