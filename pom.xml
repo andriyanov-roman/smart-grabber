@@ -12,6 +12,7 @@
         <module>data-analyzer</module>
         <module>database</module>
         <module>company</module>
+        <module>webdm</module>
     </modules>
 
     <dependencies>
