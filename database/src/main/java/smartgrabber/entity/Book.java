@@ -1,7 +1,5 @@
 package smartgrabber.entity;
 
-import com.sun.istack.internal.NotNull;
-
 import javax.persistence.*;
 
 @Entity
@@ -25,7 +23,6 @@ public class Book {
     private Boolean illustrations;
 
     @Column(name = "book_author")
-    @NotNull
     private String author;
 
     public Book(String title, Float price, String description, String isbn, Integer nbOfPage, Boolean illustrations) {
