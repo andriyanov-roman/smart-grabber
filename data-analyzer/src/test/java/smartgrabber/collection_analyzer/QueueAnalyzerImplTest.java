@@ -18,8 +18,7 @@ public class QueueAnalyzerImplTest {
     IQueueAnalyzer<Queue> analyzer = new QueueAnalyzerImpl();
     private static Deque<String> deque = new ArrayDeque<>();
 
-    @BeforeClass // поскольку эта аннотация выполняется перед созданнием самого класса
-                 // метод должен быть статическим и использовать стат. контекст
+    @BeforeClass
     public static void before() {
         deque.add("aaaa");
         deque.add("bbb");
