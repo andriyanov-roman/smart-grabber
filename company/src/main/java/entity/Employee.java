@@ -6,10 +6,10 @@ import javax.persistence.*;
  * Created by randriyanov on 21.11.15.
  */
 @Entity
-@Table
+@Table(name="employee")
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue//(strategy = GenerationType.AUTO)
     @Column(name="employee_id")
     private  Long id;
     private String name;

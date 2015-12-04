@@ -1,7 +1,7 @@
 package entity;
 
 import enums.ProductTypes;
-
+import javax.persistence.Entity;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

@@ -18,13 +18,16 @@ import java.util.List;
  */
 public class PersistCompanyByHiber {
     private Company company;
+    private List<Employee> employees;
     @Before
     public void beforeClass() {
         company = new Company();
-        List<Employee> employees= new ArrayList<>();
+        company.setCompanyName("ZAZ");
+        employees= new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             Employee e = new Employee();
             e.setName("Vasyl"+i);
+            e.setCompany(company);
             employees.add(e);
         }
         company.setEmployees(employees);
@@ -34,12 +37,20 @@ public class PersistCompanyByHiber {
     @Test
     public void persistCompany () {
         Configuration configuration = new Configuration();
+        configuration.addAnnotatedClass(Company.class);
+        configuration.addAnnotatedClass(Employee.class);
         configuration.configure("hibernate.cfg.xml");
         StandardServiceRegistryBuilder ssrb = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
         SessionFactory sf = configuration.buildSessionFactory(ssrb.build());
         Session session = sf.openSession();
         session.beginTransaction();
         session.save(company);
+
+        Employee e = new Employee();
+        e.setName("Vasyl"+888);
+        e.setCompany(company);
+        session.save(e);
+
         session.getTransaction().commit();
         session.close();
     }
