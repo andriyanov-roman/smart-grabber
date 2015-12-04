@@ -12,6 +12,7 @@
         <module>data-analyzer</module>
         <module>database</module>
     </modules>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -19,6 +20,4 @@
             <version>4.12</version>
         </dependency>
     </dependencies>
-
-
 </project>
