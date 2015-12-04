@@ -13,13 +13,13 @@ public class ArrayListAnalyzer implements ICollectionAnalyzer<ArrayList> {
     private long startTime;
     private long estimatedTime;
 
-    // Вставляет 1 000 000 объектов через fori
+    // Р’СЃС‚Р°РІР»СЏРµС‚ 1 000 000 РѕР±СЉРµРєС‚РѕРІ С‡РµСЂРµР· fori
     @Override
     public Long insertionTime(ArrayList arrayList) {
         estimatedTime = 0;
 
-        // Закоментированный вариант авлгоритма дает ~ В 2 РАЗА большие значения.
-        // Хотя на мой взгляд должно было быть наоборот...
+        // Р—Р°РєРѕРјРµРЅС‚РёСЂРѕРІР°РЅРЅС‹Р№ РІР°СЂРёР°РЅС‚ Р°РІР»РіРѕСЂРёС‚РјР° РґР°РµС‚ ~ Р’ 2 Р РђР—Рђ Р±РѕР»СЊС€РёРµ Р·РЅР°С‡РµРЅРёСЏ.
+        // РҐРѕС‚СЏ РЅР° РјРѕР№ РІР·РіР»СЏРґ РґРѕР»Р¶РЅРѕ Р±С‹Р»Рѕ Р±С‹С‚СЊ РЅР°РѕР±РѕСЂРѕС‚...
 
 //        for (int i = 0; i < 1000000; i++) {
 //            startTime = System.nanoTime();
@@ -34,8 +34,8 @@ public class ArrayListAnalyzer implements ICollectionAnalyzer<ArrayList> {
         return estimatedTime;
     }
 
-    // Вставляет 1 объект в конец с помощью add()
-    // Или множество объектов из другой коллекции с помощью addAll()
+    // Р’СЃС‚Р°РІР»СЏРµС‚ 1 РѕР±СЉРµРєС‚ РІ РєРѕРЅРµС† СЃ РїРѕРјРѕС‰СЊСЋ add()
+    // РР»Рё РјРЅРѕР¶РµСЃС‚РІРѕ РѕР±СЉРµРєС‚РѕРІ РёР· РґСЂСѓРіРѕР№ РєРѕР»Р»РµРєС†РёРё СЃ РїРѕРјРѕС‰СЊСЋ addAll()
     public Long insertionTime(ArrayList arrayList, Object o) {
         if (o.getClass() == ArrayList.class
                 || o.getClass() == LinkedList.class
@@ -51,8 +51,8 @@ public class ArrayListAnalyzer implements ICollectionAnalyzer<ArrayList> {
         return estimatedTime;
     }
 
-    // Вставляет 1 объект в место с указанным индексом с помощью add()
-    // Или множество объектов из другой коллекции в место с указанным индексом с помощью addAll()
+    // Р’СЃС‚Р°РІР»СЏРµС‚ 1 РѕР±СЉРµРєС‚ РІ РјРµСЃС‚Рѕ СЃ СѓРєР°Р·Р°РЅРЅС‹Рј РёРЅРґРµРєСЃРѕРј СЃ РїРѕРјРѕС‰СЊСЋ add()
+    // РР»Рё РјРЅРѕР¶РµСЃС‚РІРѕ РѕР±СЉРµРєС‚РѕРІ РёР· РґСЂСѓРіРѕР№ РєРѕР»Р»РµРєС†РёРё РІ РјРµСЃС‚Рѕ СЃ СѓРєР°Р·Р°РЅРЅС‹Рј РёРЅРґРµРєСЃРѕРј СЃ РїРѕРјРѕС‰СЊСЋ addAll()
     public Long insertionTime(ArrayList arrayList, Object o, int index) {
         if (o.getClass() == ArrayList.class
                 || o.getClass() == LinkedList.class
