@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 /**
  * Created by faust on 28.11.15.
  */
-@WebServlet(value="/hello")
+//@WebServlet(value="/hello")
 public class HelloWorld extends HttpServlet {
     public static final String FILE_NAME = "/home/faust/IdeaProjects/smart-grabber/web-app/src/main/resources/login.html";
     @Override

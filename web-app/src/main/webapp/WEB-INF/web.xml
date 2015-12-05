@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <servlet>
+    <!--<servlet>
         <servlet-name>HelloServlet</servlet-name>
         <servlet-class>HelloWorld</servlet-class>
     </servlet>
@@ -12,9 +12,10 @@
     <servlet-mapping>
         <servlet-name>HelloServlet</servlet-name>
         <url-pattern>/hello</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
 
-    <servlet>
+    <!-- XML is more stronger than @Annotation-->
+   <!-- <servlet>
         <servlet-name>CompanyServlet</servlet-name>
         <servlet-class>CompanyServlet</servlet-class>
     </servlet>
@@ -22,6 +23,6 @@
     <servlet-mapping>
         <servlet-name>CompanyServlet</servlet-name>
         <url-pattern>/main</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
 </web-app>
 

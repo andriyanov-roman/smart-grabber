@@ -26,12 +26,10 @@ public class CompanyServlet extends HttpServlet {
         String pageUrl = "";
         try {
             pageUrl = userController.execute(req, resp);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+            getServletContext().getRequestDispatcher(pageUrl).forward(req, resp);
+        } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
-        RequestDispatcher rd = getServletContext().getRequestDispatcher(pageUrl);
     }
 
 }

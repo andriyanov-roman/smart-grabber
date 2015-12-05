@@ -18,7 +18,7 @@
     <packaging>war</packaging>
 
     <build>
-        <finalName>helloServlet</finalName>
+        <finalName>company-app</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

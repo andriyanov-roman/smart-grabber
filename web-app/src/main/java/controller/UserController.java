@@ -9,7 +9,7 @@ import java.io.IOException;
  * Created by vlas on 05.12.15.
  */
 public class UserController implements ICommand {
-    public static final String VALID_USER_NAME = "admin@gmail.com";
+    public static final String VALID_USER_NAME = "admin";
     public static final String VALID_USER_PASSWORD = "1234";
 
     @Override
