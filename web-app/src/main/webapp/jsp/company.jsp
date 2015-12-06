@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Login Page</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          rel="stylesheet"
+integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
     <style>
         html,
         body {
@@ -31,7 +33,8 @@
             display: block;
             width: 100%;
             height: 100px;
-            background: linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(41,137,216,1) 50%,rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%);
+            background: linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(41,137,216,1) 50%,
+            rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%);
         }
         .site-footer {
             position: absolute;
@@ -63,18 +66,34 @@
             height: 128px;
             font-size:128px;
         }
+        .glyphicon-home {
+            display: block;
+            float: left;
+            width: 64px;
+            height: 64px;
+            font-size: 64px;
+            color: #fff;
+            margin: 5px 1em 0;
+            text-shadow: -1px 1px 12px #000;
+        }
+        a.glyphicon-home:hover {
+            color: #ccc;
+            text-decoration: none;
+        }
     </style>
 </head>
 
 <body>
 <header class="site-header">
+    <a href="/" title="GO HOME" class="glyphicon glyphicon-home"></a>
     <h1>Add Employee Page</h1>
 </header>
-<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width:100%;height:20px;;"><span class="sr-only">45% Complete</span></div>
+<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0"
+     aria-valuemax="100" style="width:100%;height:20px;;"><span class="sr-only">45% Complete</span></div>
 <h2>$Company$</h2>
 <div class="wrapper row">
     <div class="glyphicon glyphicon-user lock"></div>
-    <form class="form-horizontal" action="/hello" method="post">
+    <form class="form-horizontal" action="/" method="post">
         <div class="form-group">
             <label for="inputEmployeeName" class="col-sm-2 control-label">Name</label>
             <div class="col-sm-10">

@@ -1,18 +1,31 @@
+import controller.CommandRequest;
+import controller.ICommand;
 import controller.UserController;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/main")
 public class CompanyServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/jsp/login.jsp");
+        String pageURL = "/jsp/login.jsp";
+        HttpSession session = req.getSession();
+        Cookie[] cookies = req.getCookies();
+        if (!session.isNew()){
+            if (cookies.length>0){
+                for (Cookie c : cookies){
+                    if (c.getName().equals("logged") && c.getValue().equals("true")){
+                        pageURL = "/jsp/company.jsp";
+                        break;
+                    }
+                }
+            }
+        }
+        RequestDispatcher rd = getServletContext().getRequestDispatcher(pageURL);
         rd.forward(req, resp);
     }
 
@@ -21,8 +34,7 @@ public class CompanyServlet extends HttpServlet {
         processRequest(req, resp);
     }
     private void processRequest (HttpServletRequest req, HttpServletResponse resp){
-// Rewrite for CommandRequest.java
-        UserController userController = new UserController();
+        ICommand userController = CommandRequest.getInstance().getCommand(req);
         String pageUrl = "";
         try {
             pageUrl = userController.execute(req, resp);
