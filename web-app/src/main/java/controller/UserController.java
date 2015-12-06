@@ -27,8 +27,6 @@ public class UserController implements ICommand {
                 }
             }
 
-        } else {
-
         }
         String login = request.getParameter("user_name");
         if (login.equals(VALID_USER_NAME)) {

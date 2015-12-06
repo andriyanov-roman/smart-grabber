@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(value={"/jsp/company.jsp","/*"})
+@WebFilter(value = "/main")
 public class AuthFilter implements Filter{
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
