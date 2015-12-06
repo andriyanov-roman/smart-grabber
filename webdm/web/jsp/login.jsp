@@ -70,7 +70,7 @@
 <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width:100%;height:20px;;"><span class="sr-only">45% Complete</span></div>
 <div class="wrapper row">
     <div class="glyphicon glyphicon-lock lock"></div>
-    <form class="form-horizontal" action="/" method="post">
+    <form class="form-horizontal" action="/main" method="post">
         <input type="hidden" name="controller_type" value="user_controller">
         <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
