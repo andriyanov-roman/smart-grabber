@@ -6,10 +6,9 @@
   <title>A sample custom tag</title>
 </head>
 <body>
-<p style="text-align: center"><button>Generate random password</button>
-<random-pass>
 
-</random-pass>
+
+
 
 </body>
 </html>

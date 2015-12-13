@@ -5,6 +5,17 @@
         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
     <tlib-version>1.1</tlib-version>
     <short-name>random-pass</short-name>
-    <uri>/WEB-INF/randompasspen.tld</uri>
+    <uri>/WEB-INF/randompassgen.tld</uri>
+
+
+    <tag>
+        <name>random-pass</name>
+        <tag-class>tldpack.RandomPassGenerator</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>password</name>
+
+        </attribute>
+    </tag>
 
 </taglib>
