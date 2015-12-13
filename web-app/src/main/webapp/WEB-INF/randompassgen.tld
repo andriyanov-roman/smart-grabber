@@ -8,8 +8,9 @@
     <uri>/WEB-INF/randompasspen.tld</uri>
     <tag>
         <name>pass</name>
-        <tag-class>tldpack.RandomPassGenerator</tag-class>
+        <tag-class>tldpack.PassTag</tag-class>
         <body-content>empty</body-content>
+
     </tag>
 
 </taglib>

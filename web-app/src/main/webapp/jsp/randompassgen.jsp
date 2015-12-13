@@ -6,7 +6,9 @@
   <title>A sample custom tag</title>
 </head>
 <body>
-<random-pass:pass/>
-
+<form>
+<label for="password-field">Your password</label>
+<input type="text" name="password" id="password-field" value="<random-pass:pass/>">
+  </form>
 </body>
 </html>

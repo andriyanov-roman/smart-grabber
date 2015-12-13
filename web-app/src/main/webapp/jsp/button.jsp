@@ -12,8 +12,8 @@
 </head>
 <body>
 <form action="/jsp/randompassgen.jsp" method="post">
-    <label for="password-field">Your password</label>
-    <input type="password" name="password" id="password-field">
+    <%--<label for="password-field">Your password</label>--%>
+    <%--<input type="password" name="password" id="password-field">--%>
     <input type="submit" value="Generate">
     </form>
 </body>

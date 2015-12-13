@@ -7,14 +7,15 @@ import java.io.IOException;
 import java.util.Random;
 
 
-public class RandomPassGenerator extends SimpleTagSupport {
+public class RandomPassGenerator{
     private static final int charactersSize = 100;
     private static char [] characters = new char [charactersSize];
     private static int charactersCount = 0;
     private int passwordSize;
 
     public RandomPassGenerator(){
-
+    passwordSize=10;
+        initCharacters();
     }
 
     public RandomPassGenerator( int passwordSize ) {
@@ -24,13 +25,7 @@ public class RandomPassGenerator extends SimpleTagSupport {
         initCharacters();
     }
 
-    @Override
-    public void doTag() throws JspException, IOException {
-        System.out.println("Hello");
-        /*super.doTag();
-        JspWriter writer = getJspContext().getOut();
-        writer.print(password);*/
-    }
+
     // METHODS
     // fill the array of characters that will be used to generate the password
 
@@ -56,7 +51,7 @@ public class RandomPassGenerator extends SimpleTagSupport {
     }
 
     // generate a random password
-    public char [] get() {
+    public String get() {
 
         // initialize the random number generator
         Random rnd = new Random();
@@ -69,11 +64,10 @@ public class RandomPassGenerator extends SimpleTagSupport {
             password[i] = characters[ rnd.nextInt(charactersCount) ];
         }
 
-        return password;
+        return String.valueOf(password);
     }
 
-
-    public void showCharacters() {
+/*public void showCharacters() {
         for ( int i = 0; i < charactersCount && characters[i] != 0; ++i ) {
             System.out.println(characters[i]);
         }
@@ -81,7 +75,7 @@ public class RandomPassGenerator extends SimpleTagSupport {
 
     public static void main(String[] args) {
         int passwordSize = 10;
-        RandomPassGenerator password = new RandomPassGenerator( passwordSize );
-        System.out.println( password.get() );
-    }
+        RandomPassGenerator password = new RandomPassGenerator(passwordSize );
+        System.out.println( password.get());
+    }*/
 }
