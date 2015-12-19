@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" version="2.0"
+          xmlns:employeetag="/WEB-INF/employee.tld">
+    <jsp:directive.page contentType="text/html" pageEncoding="Utf-8" />
+<jsp:useBean id="employee" class="dto.EmployeeDTO" scope="request"/>
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+    <div style="width:100%;max-width: 960px;margin:0 auto">
+        <h1>Find Employe</h1>
+        <form action="employee_response.jsp">
+            <input type="text" name="name_for_search"/>
+            <input type="submit"/>
+        </form>
+    </div>
+
+</body>
+</html>
+</jsp:root>

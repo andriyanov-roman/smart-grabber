@@ -49,7 +49,6 @@ integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn
             display: table;
             width: 100%;
             max-width: 1024px;
-            min-height: 300px;
             margin: 0 auto;
             padding-top:2em;
         }
