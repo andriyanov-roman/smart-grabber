@@ -12,6 +12,7 @@
         <module>data-analyzer</module>
         <module>database</module>
         <module>web</module>
+        <module>jsf-web</module>
         <module>jaxrs</module>
     </modules>
     <dependencies>
