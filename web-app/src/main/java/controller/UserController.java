@@ -19,7 +19,7 @@ public class UserController implements ICommand {
         HttpSession session = request.getSession();
         Cookie[] cookies = request.getCookies();
         if (!session.isNew()){
-            if (cookies.length>0){
+            if (cookies.length>0) {
                 for (Cookie c : cookies){
                     if (c.getName().equals("logged") && c.getValue().equals("true")){
                         return "/jsp/company.jsp";
