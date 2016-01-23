@@ -1,11 +1,7 @@
-import com.empl.Employee;
-import org.junit.Before;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.testng.annotations.BeforeTest;
+import com.empl.MainConfig;
+import org.springframework.test.context.ContextConfiguration;
 
-/**
- * Created by faust on 23.01.16.
- */
+@ContextConfiguration(classes = MainConfig.class)
 public class EmployeeTest {
 
 

@@ -9,22 +9,19 @@ import org.springframework.stereotype.Component;
 /**
  * Created by faust on 23.01.16.
  */
-
 @Component
-@PropertySource("empl.properties")
 public class Employee {
-    @Value("${employee.name}")
+    @Value("${employee.id}")
     private Long id;
     @Value("${employee.name}")
     private String name;
-    @Value("${surname.name}")
+    @Value("${employee.surname}")
     private String surname;
     @Value("${employee.age}")
     private int age;
     @Value("${employee.gender}")
     private boolean gender;
 
-    @Autowired
     public Employee() {
     }
 
