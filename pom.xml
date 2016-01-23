@@ -12,6 +12,7 @@
         <module>data-analyzer</module>
         <module>database</module>
         <module>webdm</module>
+        <module>spring-empl</module>
     </modules>
     <dependencies>
         <dependency>
