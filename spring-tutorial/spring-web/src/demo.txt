@@ -1,0 +1,71 @@
+Based on figure 5.1, it looks like there are a lot of moving parts to be configured. For-
+tunately, thanks to some advancements in the most recent versions of Spring, it’s easy
+to get started with Spring MVC . For now, you’ll take the simplest approach to configur-
+ing Spring MVC : you’ll do just enough configuring to be able to run the controllers
+you create. In chapter 7, we’ll look at some additional setup options.
+C ONFIGURING D ISPATCHER S ERVLET
+DispatcherServlet is the centerpiece of Spring MVC . It’s where the request first hits
+the framework, and it’s responsible for routing the request through all the other
+components.
+Historically, servlets like DispatcherServlet have been configured in a web.xml
+file that’s carried in the web application’s WAR file. Certainly that’s one option for con-
+figuring DispatcherServlet . But thanks to recent advances in the Servlet 3 specifica-
+tion and in Spring 3.1, it’s not the only option. And it’s not the option we’ll go with in
+this chapter.
+Instead of a web.xml file, you’re going to use Java to configure DispatcherServlet
+in the servlet container. The following listing shows the Java class you’ll need.
+Listing 5.1
+Configuring DispatcherServlet
+package spittr.config;
+import org.springframework.web.servlet.support.
+AbstractAnnotationConfigDispatcherServletInitializer;
+public class SpittrWebAppInitializer
+extends AbstractAnnotationConfigDispatcherServletInitializer {
+@Override
+protected String[] getServletMappings() {
+return new String[] { "/" };
+}
+Map DispatcherServlet to /
+@Override
+protected Class<?>[] getRootConfigClasses() {
+return new Class<?>[] { RootConfig.class };
+}
+@Override
+protected Class<?>[] getServletConfigClasses() {
+return new Class<?>[] { WebConfig.class };
+}
+Specify configuration class
+}
+Before we dive into the details of listing 5.1, you may wonder what the word spittr has
+to do with anything. The class is named SpittrWebAppInitializer , and it’s in a pack-
+age named spittr.config. I’ll explain that in a moment (in section 5.1.3), but for now,
+suffice it to say that the application you’ll create is named Spittr.Getting started with Spring MVC
+135
+To understand how listing 5.1 works, it’s probably sufficient to know that any class
+that extends AbstractAnnotationConfigDispatcherServletInitializer will auto-
+matically be used to configure DispatcherServlet and the Spring application con-
+text in the application’s servlet context.
+AbstractAnnotationConfigDispatcherServletInitializer exposed
+If you insist on the more detailed explanation, here it is. In a Servlet 3.0 environment,
+the container looks for any classes in the classpath that implement the javax.servlet
+.ServletContainerInitializer interface; if any are found, they’re used to config-
+ure the servlet container.
+Spring supplies an implementation of that interface called SpringServlet-
+ContainerInitializer that, in turn, seeks out any classes that implement Web-
+ApplicationInitializer and delegates to them for configuration. Spring 3.2
+introduced a convenient base implementation of WebApplicationInitializer
+called AbstractAnnotationConfigDispatcherServletInitializer. Because
+your SpittrWebAppInitializer extends AbstractAnnotationConfigDispatcher-
+ServletInitializer (and thus implements WebApplicationInitializer), it will
+be automatically discovered when deployed in a Servlet 3.0 container and be used to
+configure the servlet context.
+Even though its name is extremely long, AbstractAnnotationConfigDispatcher-
+ServletInitializer is a snap to use. Looking at listing 5.1, you can see that
+SpittrWebAppInitializer overrides three methods.
+The first method, getServletMappings() , identifies one or more paths that
+DispatcherServlet will be mapped to. In this case, it’s mapped to /, indicating that it
+will be the application’s default servlet. It will handle all requests coming into the
+application.
+In order to understand the other two methods, you must first understand the rela-
+tionship between DispatcherServlet and a servlet listener known as ContextLoader-
+Listener .

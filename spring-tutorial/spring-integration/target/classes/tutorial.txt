@@ -1,0 +1,47 @@
+Spring comes with several flavors of application context. Here are a few that you’ll
+most likely encounter:
+AnnotationConfigApplicationContext —Loads a Spring application context
+from one or more Java-based configuration classes
+AnnotationConfigWebApplicationContext —Loads a Spring web application
+context from one or more Java-based configuration classes
+ClassPathXmlApplicationContext —Loads a context definition from one or
+more XML files located in the classpath, treating context-definition files as class-
+path resources
+FileSystemXmlApplicationContext —Loads a context definition from one or
+more XML files in the filesystem
+XmlWebApplicationContext —Loads context definitions from one or more
+XML files contained in a web application
+
+Life cycle
+
+Spring instantiates the bean.
+Spring injects values and bean references into the bean’s properties.
+If the bean implements BeanNameAware , Spring passes the bean’s ID to the set-
+BeanName() method.
+If the bean implements BeanFactoryAware , Spring calls the setBeanFactory()
+method, passing in the bean factory itself.
+If the bean implements ApplicationContextAware , Spring calls the set-
+ApplicationContext() method, passing in a reference to the enclosing appli-
+cation context.
+If the bean implements the BeanPostProcessor interface, Spring calls its post-
+ProcessBeforeInitialization() method.
+If the bean implements the InitializingBean interface, Spring calls its after-
+PropertiesSet() method. Similarly, if the bean was declared with an init-
+method , then the specified initialization method is called.
+If the bean implements BeanPostProcessor , Spring calls its postProcess-
+AfterInitialization() method.
+At this point, the bean is ready to be used by the application and remains in the
+application context until the application context is destroyed.
+If the bean implements the DisposableBean interface, Spring calls its
+destroy() method. Likewise, if the bean was declared with a destroy-method ,
+the specified method is called.
+
+Spring is incredibly flexible, offering three primary wiring mechanisms:
+ Explicit configuration in XML
+ Explicit configuration in Java
+ Implicit bean discovery and automatic wiring
+
+Spring attacks automatic wiring from two angles:
+ Component scanning—Spring automatically discovers beans to be created in the
+application context.
+ Autowiring—Spring automatically satisfies bean dependencies.
