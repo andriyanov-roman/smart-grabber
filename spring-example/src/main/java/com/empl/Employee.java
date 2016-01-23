@@ -13,9 +13,6 @@ import org.springframework.stereotype.Component;
 @Component
 @PropertySource("empl.properties")
 public class Employee {
-    @Autowired
-    Environment env;
-
     @Value("${employee.name}")
     private Long id;
     @Value("${employee.name}")
@@ -27,10 +24,9 @@ public class Employee {
     @Value("${employee.gender}")
     private boolean gender;
 
+    @Autowired
     public Employee() {
     }
-
-
 
     public String getName() {
         return name;
