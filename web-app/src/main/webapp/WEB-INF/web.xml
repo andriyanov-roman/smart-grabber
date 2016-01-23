@@ -24,5 +24,10 @@
         <servlet-name>CompanyServlet</servlet-name>
         <url-pattern>/main</url-pattern>
     </servlet-mapping>-->
+    <servlet-mapping>
+        <servlet-name>HelloServlet</servlet-name>
+        <url-pattern>*.jsf</url-pattern>
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
 </web-app>
 

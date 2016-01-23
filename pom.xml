@@ -13,6 +13,7 @@
         <module>database</module>
         <module>company</module>
         <module>web-app</module>
+        <module>spring-example</module>
     </modules>
 
     <dependencies>
