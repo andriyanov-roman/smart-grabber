@@ -12,9 +12,13 @@ public class Main {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(MainConfig.class);
         Environment environment = context.getBean(Environment.class);
-        String test = environment.getProperty("employee.name");
+        //String test = environment.getProperty("employee.name");
         Employee e = context.getBean(Employee.class);
-        System.out.println(test);
+        System.out.println(e);
+        String sql = "INSERT INTO `company_base.Emolyee`\n" +
+                "(`id`, `name`, `surname`, `age`, `gender`)\n" +
+                "VALUES (7, \"Egor\", \"Egorov\", 25, TRUE);";
+        //new MyH2Repo().getJdbcTemplate().execute(sql);
     }
 
 }

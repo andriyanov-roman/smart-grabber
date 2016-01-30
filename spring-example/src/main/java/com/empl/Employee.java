@@ -79,4 +79,15 @@ public class Employee {
         result = 31 * result + (gender ? 1 : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", age=" + age +
+                ", gender=" + gender +
+                '}';
+    }
 }
