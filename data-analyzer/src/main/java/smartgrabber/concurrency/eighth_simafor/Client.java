@@ -22,7 +22,7 @@ public class Client extends Thread {
 
                     + " took channel #" + channel.getСhannellId());
             channel.using();
-        } catch (ResourсeException e) {
+        } catch (ResourceException e) {
             System.out.println("Client #" + this.getId() + " lost ->"
                     + e.getMessage());
         } finally {

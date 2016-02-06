@@ -19,16 +19,16 @@ public class ChannelPool<T> {
         resources.addAll(source);
     }
 
-    public T getResource(long maxWaitMillis) throws ResourсeException {
+    public T getResource(long maxWaitMillis) throws ResourceException {
         try {
             if (semaphore.tryAcquire(maxWaitMillis, TimeUnit.MILLISECONDS)) {
                 T res = resources.poll();
                 return res;
             }
         } catch (InterruptedException e) {
-            throw new ResourсeException(e);
+            throw new ResourceException(e);
         }
-        throw new ResourсeException(":превышено время ожидания");
+        throw new ResourceException(":превышено время ожидания");
     }
 
     public void returnResource(T res) {
